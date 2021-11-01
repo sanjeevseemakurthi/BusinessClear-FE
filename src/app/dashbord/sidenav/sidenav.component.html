@@ -1,1 +1,24 @@
-<p>sidenav works!</p>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer [opened] = "sidenavtoggle || islargescreen" class="example-sidenav" mode="side">
+      <p>Auto-resizing sidenav</p>
+      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+      <button (click)="showFiller = !showFiller" mat-raised-button>
+        Toggle extra text
+      </button>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <div class="container-fluid">
+        <div class="row top-nav" >
+          <div class="col-sm-6 nav-col-name">
+              Business CLear
+          </div>
+          <div class="col-sm-6 nav-col-button">
+            <button *ngIf = "!islargescreen" class="nav-menu-button" (click)="sidenavtogglemethod()">
+              <i class="fa fa-bars fa-2x"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</mat-drawer-container>

@@ -1,0 +1,38 @@
+.example-container {
+    width: 100%;
+    height: 100vh;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav-content {
+    height: 100%;
+  }
+  .example-sidenav{
+    max-width: 200px;
+    min-width: 200px;
+  }
+  .top-nav {
+    background-color: rgb(135, 182, 253);
+  }
+  .nav-col-button {
+    padding: 5px;
+    min-height: 50px;
+    text-align: right;
+  }
+  .nav-menu-button {
+    border: none;
+    background-color: white;
+    border-radius: 10%;
+  }
+  .custom-style {
+    font-size: 40px;
+  }
+  .nav-col-name {
+    padding: 5px;
+    min-height: 50px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    font-size: x-large;
+    font-family: 'batmfa';
+  }
