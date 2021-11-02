@@ -1,10 +1,25 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer [opened] = "sidenavtoggle || islargescreen" class="example-sidenav" mode="side">
-      <p>Auto-resizing sidenav</p>
-      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-      <button (click)="showFiller = !showFiller" mat-raised-button>
-        Toggle extra text
-      </button>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col image-space">
+            <img class="image-circle" src="../../../assets/images/sanju-profile-pic.jpg" alt="">
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col">
+            <div *ngFor = "let item of menuitems">
+              <div class="sidenav-content-menu">
+                <div class="sidenav-content-menu-icon">
+                </div>
+                <div class="sidenav-content-menu-name">
+                  {{item.name}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </mat-drawer>
   
     <div class="example-sidenav-content">
