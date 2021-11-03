@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashbordModule } from './dashbord/dashbord.module';
+import { BusinesslogicModule } from './businesslogic/businesslogic.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -13,6 +14,7 @@ import { DashbordModule } from './dashbord/dashbord.module';
     BrowserModule,
     AppRoutingModule,
     DashbordModule,
+    BusinesslogicModule,
     BrowserAnimationsModule,
   ],
   providers: [],

@@ -13,18 +13,29 @@ export class SidenavComponent implements OnInit {
   menuitems = [
     {
       icon :'fa-home',
-      name : 'Home'
+      name : 'Home',
+      navigateto : '../Home'
     },
     {
-      icon :' fa-chart-bar',
-      name : 'Analysis'
-    },{
-      icon :'fa-chart-pie',
-      name : 'Stocks/Sales'
-    },{
-      icon :'fa-money-bill',
-      name : 'Lent'
+      icon :' fa-home',
+      name : 'Analysis',
+      navigateto : '../dashbord'
     },
+    {
+      icon :'fa-home',
+      name : 'Stocks/Sales',
+      navigateto : '../stocksandsales'
+    },
+    {
+      icon :'fa-home',
+      name : 'Lent',
+      navigateto : '../Lent'
+    },
+    {
+      icon :'fa-home',
+      name : 'settings',
+      navigateto : '../settings'
+    }
   ]
   constructor( breakpointObserver: BreakpointObserver) {
     breakpointObserver

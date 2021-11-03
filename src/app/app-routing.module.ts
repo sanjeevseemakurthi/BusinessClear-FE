@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren : "./dashbord/dashbord.module#DashbordModule"
   },
   {
+    path:'businesslogic',
+    loadChildren : "./businesslogic/businesslogic.module#BusinesslogicModule"
+  },
+  {
     path:'**',
     component : NoroutefoundComponent
   }
