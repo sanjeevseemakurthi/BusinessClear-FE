@@ -11,6 +11,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     CommonModule,
     DashbordRoutingModule,
     MatSidenavModule
+  ],
+  exports:[
+    SidenavComponent
   ]
 })
 export class DashbordModule { }
