@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashbordModule } from './dashbord/dashbord.module';
 import { BusinesslogicModule } from './businesslogic/businesslogic.module';
+import { SharedModule } from './shared/shared.module';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -16,6 +18,8 @@ import { BusinesslogicModule } from './businesslogic/businesslogic.module';
     DashbordModule,
     BusinesslogicModule,
     BrowserAnimationsModule,
+    SharedModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

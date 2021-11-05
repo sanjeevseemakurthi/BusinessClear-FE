@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { LogindailogComponent } from 'src/app/shared/logindailog/logindailog.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -37,7 +39,7 @@ export class SidenavComponent implements OnInit {
       navigateto : '../settings'
     }
   ]
-  constructor( breakpointObserver: BreakpointObserver) {
+  constructor( breakpointObserver: BreakpointObserver,public dailog:MatDialog) {
     breakpointObserver
     .observe([Breakpoints.Large])
     .pipe()
@@ -52,4 +54,9 @@ sidenavtogglemethod()
 {
   this.sidenavtoggle = ! this.sidenavtoggle;
 }
+loginpopup() {
+  const dialogRef = this.dailog.open(LogindailogComponent);
+  dialogRef.afterClosed().subscribe(result => {
+    });
+  }
 }
