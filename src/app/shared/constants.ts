@@ -1,0 +1,1 @@
+export const baserurl = "https://localhost:4200/";
