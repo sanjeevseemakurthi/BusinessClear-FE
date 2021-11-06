@@ -9,9 +9,9 @@ export class SharedService {
   constructor(public httpreq:HttpClient) { }
   login(email, password) {
     let data = {
-      login: email,
+      username: email,
       password: password,
     };
-    return this.httpreq.post(this.baseurl + '/login',data);
+    return this.httpreq.post(this.baseurl + 'authenticate ',data);
   }
 }

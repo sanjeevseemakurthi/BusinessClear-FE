@@ -14,11 +14,10 @@ export class LogindailogComponent implements OnInit {
   }
   auth() {
     this.sharedservice.login(this.login,this.password).subscribe( res => {
-      if(res) { 
-        if(res['DATA'] === 'sucess') {
-          sessionStorage.setItem('jwt',res['JSON']);
-        }
+      if(res && res['jwtToken']) { 
+        sessionStorage.setItem('jwt_businessclear',JSON.stringify(res['jwtToken']));
       }
-    })
+    },
+    err=>{console.log("error")})
   }
 }
