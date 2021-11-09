@@ -8,6 +8,8 @@ import { DashbordModule } from './dashbord/dashbord.module';
 import { BusinesslogicModule } from './businesslogic/businesslogic.module';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthtokenInterceptor } from './authtoken.interceptor';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +23,13 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthtokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

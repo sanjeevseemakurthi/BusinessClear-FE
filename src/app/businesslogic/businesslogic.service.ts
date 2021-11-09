@@ -8,6 +8,9 @@ export class BusinesslogicService {
   baseurl = baserurl;
   constructor(public httpclient:HttpClient) { }
   getsettingdata(){
-    return this.httpclient.get(this.baseurl+'settings_data')
+    return this.httpclient.get(this.baseurl+'getSettings')
+  }
+  addsettings(data) {
+    return this.httpclient.post(this.baseurl+'api/addSettings',data);
   }
 }
