@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {BusinesslogicService} from '../businesslogic.service';
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public businesslogicservice:BusinesslogicService) { }
 
   ngOnInit(): void {
+    this.businesslogicservice.getsettingdata().subscribe(res => {
+      console.log(res);
+    } , err => { console.log("error")});
   }
 
 }
