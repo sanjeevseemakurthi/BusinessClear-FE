@@ -11,6 +11,12 @@ export class BusinesslogicService {
     return this.httpclient.get(this.baseurl+'getSettings')
   }
   addsettings(data) {
-    return this.httpclient.post(this.baseurl+'api/addSettings',data);
+    return this.httpclient.post(this.baseurl+'addSettingsmultiple',data);
+  }
+  updatesettings(data) {
+    return this.httpclient.post(this.baseurl+'addSettingsmultiple',data);
+  }
+  deletesettings(data) {
+    return this.httpclient.post(this.baseurl+'deleteSettingsmultiple',data);
   }
 }

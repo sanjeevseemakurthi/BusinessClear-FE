@@ -1,21 +1,26 @@
 <div class="container-fluid p-5">
-    <div class="row">
-        <div class="col">
-          <input type="text" disabled placeholder="gold">
+    <div *ngFor="let eachpropert of displaydata,let last=last,let indexprop = index" class="row property_class">
+        <div class="col-sm-4">
+          <input type="text"  [(ngModel)]= "eachpropert.value"> 
+          <button class="buttonminus" (click) = "deletepropert(eachpropert,indexprop)">  <i class="fa fa-minus"></i> </button>
         </div>
-        <div class="col">
+        <div class="col-sm-4">
            <div class="container">
-            <div class="row">
+            <div  *ngFor="let subproperty of settings_data[eachpropert.name],let index = index,let lastsub=last" class="row subproperty_class" >
                 <div class="col">
-                 <input type="text" disabled placeholder="gold">
-                </div>
-             </div>
-             <div class="row">
-                <div class="col">
-                 <input type="text" disabled placeholder="gold">
+                 <input type="text"  [(ngModel)]="subproperty.name">
+                 <button class="buttonminus" (click)="deletesubproperty(eachpropert.name,index)">  <i class="fa fa-minus"></i> </button>
+                 <button *ngIf="lastsub" class="buttonminus" (click)="addsubproperty(eachpropert.name)">  <i class="fa fa-plus"></i> </button>
                 </div>
              </div>
            </div>
         </div>
     </div>
+</div>
+<div class="row">
+  <div class="fotter_class">
+    <button type="button" class="footer_button" (click)="addproperty()">Add property</button>
+    <button type="button" class="footer_button">Reset</button>
+    <button type="button" class="footer_button" (click)="submitdata()">Submit</button>
+  </div>
 </div>

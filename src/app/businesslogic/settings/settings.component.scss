@@ -1,0 +1,30 @@
+.property_class{
+    margin: 10px;
+}
+.subproperty_class {
+    margin: 5px;
+}
+.fotter_class{
+    position: absolute;
+    bottom: 0px;
+    background-color:#e6e6e6;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.footer_button {
+    color: #bababa;
+    border-radius: 6px; 
+    width: 100px;
+    border-color: #bababa;
+    margin: 10px;
+}
+.footer_button:hover{
+    color: white;
+    background-color: rgb(72, 102, 167);
+}
+.buttonminus{
+    border-radius: 50%;
+    margin-left: 10px;
+    background-color: white;
+}
