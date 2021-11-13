@@ -19,4 +19,7 @@ export class BusinesslogicService {
   deletesettings(data) {
     return this.httpclient.post(this.baseurl+'deleteSettingsmultiple',data);
   }
+  addstocks(data) {
+    return this.httpclient.post(this.baseurl+'addstocks',data);
+  }
 }

@@ -1,57 +1,68 @@
 <div class="card">
     <mat-dialog-content>
-      <form>
+      <form #stockdata="ngForm">
        <div class="continer-fluid">
            <div class="row">
             <div class="col">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" ngModel>
             </div>
+           </div>
+           <div class="row">
             <div class="col">
                 <label for="phno">Phoneno</label>
-                <input type="text" name="phno" id="phno">
+                <input type="text" name="phno" id="phno" ngModel>
             </div>
            </div>
            <div class="row">
             <div class="col"> 
                 <label for="property">Property</label>
-                <select name="property" id="property">
-                    <option *ngFor="let item of list" [value]="item">{{item}}</option>
+                <select name="property" id="property" ngModel>
+                    <option *ngFor="let item of list">{{item}}</option>
                 </select>
             </div>
+           </div>
+           <div class="row">
             <div class="col"> 
-             <label for="property">SubProperty</label>
-             <select name="subproperty" id="subproperty">
-                 <option *ngFor="let item of list" [value]="item">{{item}}</option>
-             </select>
-            </div>
-        </div>
+                <label for="property">SubProperty</label>
+                <select name="subproperty" id="subproperty" ngModel>
+                    <option *ngFor="let item of list">{{item}}</option>
+                </select>
+               </div>
+           </div>
            <div class="row">
             <div class="col">
                 <label for="qty">Quantity</label>
-                <input type="text" name="qty" id="qty">
+                <input type="text" name="qty" id="qty" ngModel>
             </div>
+           </div>
+           <div class="row">
+               <div class="col">
+                   <label for="initialdate">Date</label>
+                   <input type="date" name="initialdate" id="initialdate" ngModel>
+               </div>
            </div>
            <div class="row">
             <div class="col">
                 <label for="amount">Amount</label>
-                <input type="text" name="amount" id="amount">
-            </div>
-            <div class="col">
-                <label for="amount_cleared">AmountPaid</label>
-                <input type="text" name="amount_cleared" id="amount_cleared">
+                <input type="text" name="amount" id="amount" ngModel>
             </div>
            </div>
            <div class="row">
             <div class="col">
-              <button class="d-inline" [mat-dialog-close] = "data" (click)="auth()">Login</button>
+                <label for="amountcleared">AmountPaid</label>
+                <input type="text" name="amountcleared" id="amountcleared" ngModel>
             </div>
-            <div class="col">
-              <button class="d-inline" [mat-dialog-close] = "data">Cancel</button>
+           </div>
+           <div class="row">
+            <div class="col dailogbutton">
+              <button class="d-inline"  [mat-dialog-close] = "stockdata.value">Submit</button>
+            </div>
+            <div class="col dailogbutton">
+              <button class="d-inline" [mat-dialog-close] = "">Cancel</button>
             </div>
           </div>
        </div>
       </form>
-      
     </mat-dialog-content>
   </div>

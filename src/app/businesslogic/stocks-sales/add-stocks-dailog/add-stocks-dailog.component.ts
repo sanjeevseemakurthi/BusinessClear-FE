@@ -1,6 +1,6 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 @Component({
   selector: 'app-add-stocks-dailog',
   templateUrl: './add-stocks-dailog.component.html',
@@ -8,7 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class AddStocksDailogComponent implements OnInit {
   data = "sanju"
-  list = ["samn","afhsgfh"]
+  list = ["samn","afhsgfh","samn","afhsgfh","samn","afhsgfh"]
   constructor(@Inject(MAT_DIALOG_DATA) private dailogdata,dialogRef: MatDialogRef<AddStocksDailogComponent>)
    {
     dialogRef.disableClose = true;
@@ -16,5 +16,4 @@ export class AddStocksDailogComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  auth(){}
 }

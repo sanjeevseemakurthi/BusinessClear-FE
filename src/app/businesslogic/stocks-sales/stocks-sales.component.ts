@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { BusinesslogicService } from '../businesslogic.service';
 import { AddStocksDailogComponent } from './add-stocks-dailog/add-stocks-dailog.component';
 @Component({
   selector: 'app-stocks-sales',
@@ -8,7 +9,7 @@ import { AddStocksDailogComponent } from './add-stocks-dailog/add-stocks-dailog.
 })
 export class StocksSalesComponent implements OnInit {
 
-  constructor(private matdailog:MatDialog) { }
+  constructor(private matdailog:MatDialog,private businesslogicService:BusinesslogicService) { }
 
   ngOnInit(): void {
   }
@@ -16,7 +17,11 @@ export class StocksSalesComponent implements OnInit {
   stocksdisplay() {
     let dialogRef = this.matdailog.open(AddStocksDailogComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+     if(result !== "") {
+      this.businesslogicService.addstocks(result).subscribe(res=> {
+        console.log("sucess");
+      });
+     }
     });
   }
 }

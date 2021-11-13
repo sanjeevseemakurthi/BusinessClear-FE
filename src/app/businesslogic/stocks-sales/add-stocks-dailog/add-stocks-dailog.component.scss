@@ -1,10 +1,20 @@
 .col {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 5px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
 }
 .row {
   margin: 5px;
+}
+label {
+   width: 100PX;
+}
+input,select,option{
+  border-color:black ;
+}
+.dailogbutton {
+  display: flex;
+  justify-content: center;
 }
