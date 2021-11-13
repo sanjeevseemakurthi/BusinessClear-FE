@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BusinesslogicService} from '../businesslogic.service';
 import {cloneDeep as loadashclonedeep} from 'lodash';
+import { forkJoin } from 'rxjs';
 import { element } from 'protractor';
 @Component({
   selector: 'app-settings',
@@ -13,6 +14,7 @@ export class SettingsComponent implements OnInit {
   displaydata:any;
   newnumber = 0;
   deletednodes = [];
+  subcriptionlist:any;
   constructor(public businesslogicservice:BusinesslogicService) { }
 
   ngOnInit(): void {
@@ -90,22 +92,20 @@ export class SettingsComponent implements OnInit {
     console.log(this.deletednodes);
     console.log(newNodes);
     console.log(updatenodes);
+    let payloads =[];
    if(newNodes.length !== 0) {
-    this.businesslogicservice.addsettings(newNodes).subscribe(res=>{
-      console.log(res);
-    }) 
+    payloads.push( this.businesslogicservice.addsettings(newNodes));
    }
    if(updatenodes.length !== 0) {
-    this.businesslogicservice.updatesettings(updatenodes).subscribe(res=>{
-      console.log(res);
-    }) 
+    payloads.push( this.businesslogicservice.updatesettings(updatenodes));
    }
    if(this.deletednodes.length !==0){
-    this.businesslogicservice.deletesettings(this.deletednodes).subscribe(res=>{
-      console.log(res);
-      this.deletednodes = [];
-    }) 
+    payloads.push( this.businesslogicservice.deletesettings(this.deletednodes));
    }
+   forkJoin(payloads).subscribe(res => {
+     this.deletednodes = [];
+    this.populatedata();
+   })
   }
   populatedata() {
     this.businesslogicservice.getsettingdata().subscribe(res => {

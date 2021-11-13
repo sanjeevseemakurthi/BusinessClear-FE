@@ -8,8 +8,8 @@ import { SharedService } from '../shared.service';
 export class LogindailogComponent implements OnInit {
 
   constructor(public sharedservice:SharedService) { }
-  login = "sanju";
-  password = "sanju";
+  login = "demo";
+  password = "demo";
   ngOnInit(): void {
   }
   auth() {
