@@ -116,4 +116,7 @@ export class SettingsComponent implements OnInit {
       });
     } , err => { console.log("error")});
   }
+  reset() {
+    this.populatedata();
+  }
 }
