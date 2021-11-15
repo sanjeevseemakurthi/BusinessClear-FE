@@ -8,8 +8,8 @@
 .row {
   margin: 5px;
 }
-label {
-   width: 100PX;
+label,select {
+   min-width: 100PX;
 }
 input,select,option{
   border-color:black ;

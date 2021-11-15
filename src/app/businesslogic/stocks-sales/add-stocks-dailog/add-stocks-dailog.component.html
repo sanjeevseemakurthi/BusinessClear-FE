@@ -1,6 +1,6 @@
 <div class="card">
     <mat-dialog-content>
-      <form #stockdata="ngForm">
+      <form #stockdata="ngForm" validate>
        <div class="continer-fluid">
            <div class="row">
             <div class="col">
@@ -11,47 +11,48 @@
            <div class="row">
             <div class="col">
                 <label for="phno">Phoneno</label>
-                <input type="text" name="phno" id="phno" ngModel>
+                <input type= "number" name="phno" id="phno" ngModel>
             </div>
            </div>
            <div class="row">
             <div class="col"> 
                 <label for="property">Property</label>
-                <select name="property" id="property" ngModel>
-                    <option *ngFor="let item of list">{{item}}</option>
+                <select name="property" id="property"  (change)="assignsubproperties($event.target.value)">
+                    <option *ngFor="let item of properties">{{item}}</option>
                 </select>
             </div>
            </div>
            <div class="row">
             <div class="col"> 
-                <label for="property">SubProperty</label>
-                <select name="subproperty" id="subproperty" ngModel>
-                    <option *ngFor="let item of list">{{item}}</option>
+                <!-- her we have id so changed name  -->
+                <label for="settingsid">SubProperty</label>
+                <select name="settingsid" id="settingsid" ngModel>
+                    <option *ngFor="let item of subproperties"  [value]="item.id">{{item.name}}</option>
                 </select>
                </div>
            </div>
            <div class="row">
             <div class="col">
                 <label for="qty">Quantity</label>
-                <input type="text" name="qty" id="qty" ngModel>
+                <input type="number" name="qty" id="qty" required ngModel>
             </div>
            </div>
            <div class="row">
                <div class="col">
                    <label for="initialdate">Date</label>
-                   <input type="date" name="initialdate" id="initialdate" ngModel>
+                   <input type="date" name="initialdate" id="initialdate" required ngModel>
                </div>
            </div>
            <div class="row">
             <div class="col">
                 <label for="amount">Amount</label>
-                <input type="text" name="amount" id="amount" ngModel>
+                <input type="number" name="amount" id="amount" ngModel>
             </div>
            </div>
            <div class="row">
             <div class="col">
                 <label for="amountcleared">AmountPaid</label>
-                <input type="text" name="amountcleared" id="amountcleared" ngModel>
+                <input type="number" name="amountcleared" id="amountcleared" required ngModel>
             </div>
            </div>
            <div class="row">
