@@ -7,6 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { StocksSalesComponent } from './stocks-sales/stocks-sales.component';
 import { AddStocksDailogComponent } from './stocks-sales/add-stocks-dailog/add-stocks-dailog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule  } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent],
   imports: [
@@ -14,7 +18,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     BusinesslogicRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatInputModule 
   ]
 })
 export class BusinesslogicModule { }

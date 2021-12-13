@@ -22,4 +22,7 @@ export class BusinesslogicService {
   addstocks(data) {
     return this.httpclient.post(this.baseurl+'addstocks',data);
   }
+  getlatesttransactions(data) {
+    return this.httpclient.post(this.baseurl+'gettransactions',data);
+  }
 }
