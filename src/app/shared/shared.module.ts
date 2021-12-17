@@ -5,8 +5,9 @@ import { LogindailogComponent } from './logindailog/logindailog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AleartdailogboxComponent } from './aleartdailogbox/aleartdailogbox.component';
 @NgModule({
-  declarations: [NoroutefoundComponent, LogindailogComponent],
+  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
   exports:[
     NoroutefoundComponent,
     LogindailogComponent,
-    MatDialogModule
+    MatDialogModule,
+    AleartdailogboxComponent
   ]
 })
 export class SharedModule { }

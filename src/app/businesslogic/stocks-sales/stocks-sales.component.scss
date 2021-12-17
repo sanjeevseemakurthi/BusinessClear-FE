@@ -8,6 +8,9 @@ table {
   }
   
   td, th {
-    width: 25%;
+    width: 15%;
   }
-  
+  .actions {
+    display: flex;
+    justify-content: space-around;
+  }

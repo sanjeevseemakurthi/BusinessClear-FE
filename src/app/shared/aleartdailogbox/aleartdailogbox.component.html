@@ -1,0 +1,13 @@
+<h2 mat-dialog-title> {{data.title}} </h2>
+<mat-dialog-content class="mat-typography">
+ <div [innerHTML] = "data.message"></div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <div *ngIf="data.twoevents">
+    <button mat-button [mat-dialog-close] = "true">ok</button>
+    <button mat-button [mat-dialog-close] = "false" cdkFocusInitial>cancel</button>
+  </div>
+  <div *ngIf ="!data.twoevents">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>ok</button>
+  </div>
+</mat-dialog-actions>

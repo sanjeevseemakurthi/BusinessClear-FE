@@ -6,6 +6,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {cloneDeep as loadashclonedeep} from 'lodash';
+import {AleartdailogboxComponent} from '../../shared/aleartdailogbox/aleartdailogbox.component';
 @Component({
   selector: 'app-stocks-sales',
   templateUrl: './stocks-sales.component.html',
@@ -16,13 +17,15 @@ export class StocksSalesComponent implements OnInit {
   filter = '';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private matdailog:MatDialog,private businesslogicService:BusinesslogicService) { }
+  constructor(private matdailog:MatDialog,private businesslogicService:BusinesslogicService,
+    private Dailog:MatDialog) { }
   settings_data = {};
-  displayedColumns = [
-    'daystocks','daysales','name','amount','qty'
-  ]
+  displayedColumns = ['name','amount','qty','property','subproperty','action' ]
+  settingsalldata = [];
+  settingsidmapping = {};
   ngOnInit(): void {
     this.populatesettingsdata();
+    this.populateallsettingsdata();
     this.populatetabledata();
   }
   ngAfterViewInit() {
@@ -35,9 +38,24 @@ export class StocksSalesComponent implements OnInit {
   }
   populatetabledata() {
     this.businesslogicService.getlatesttransactions({}).subscribe(res => {
+      Object.keys(res).forEach(element => {
+        res[element]['property'] = this.settingsidmapping[res[element].settingsid].property;
+        res[element]['subproperty'] = this.settingsidmapping[res[element].settingsid].subproperty;
+      });
+      console.log(res);
       this.dataSource =  new MatTableDataSource(loadashclonedeep(res));
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+    } , err => { console.log("error")});
+  }
+  populateallsettingsdata(){
+    this.businesslogicService.getSettingsall().subscribe(res => {
+      this.settingsalldata = loadashclonedeep(res);
+      this.settingsidmapping = {};
+      this.settingsalldata.forEach(element => {
+        this.settingsidmapping[element.id] = element;
+      });
+      console.log(this.settingsidmapping);
     } , err => { console.log("error")});
   }
   addstock() {
@@ -69,5 +87,35 @@ export class StocksSalesComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  edittransaction() {
+    const dailogref = this.Dailog.open(AleartdailogboxComponent,
+      {
+        data: {
+          title: 'edit',
+          message:'you are editinmg',
+          twoevents: false
+        },
+        width: '500px'
+      }
+      );
+    dailogref.afterClosed().subscribe(result => {
+      console.log(result);
+    })
+  }
+  deletetransaction() {
+    const dailogref = this.Dailog.open(AleartdailogboxComponent,
+      {
+        data: {
+          title: 'Delete',
+          message:'Are you Sure you are Deleating the record',
+          twoevents: true
+        },
+        width: '500px'
+      }
+      );
+    dailogref.afterClosed().subscribe(result => {
+      console.log(result);
+    })
   }
 }

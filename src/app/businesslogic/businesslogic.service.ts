@@ -25,4 +25,7 @@ export class BusinesslogicService {
   getlatesttransactions(data) {
     return this.httpclient.post(this.baseurl+'gettransactions',data);
   }
+  getSettingsall() {
+    return this.httpclient.get(this.baseurl+'getSettingsall');
+  }
 }
