@@ -28,4 +28,7 @@ export class BusinesslogicService {
   getSettingsall() {
     return this.httpclient.get(this.baseurl+'getSettingsall');
   }
+  deleterecord(data) {
+    return this.httpclient.post(this.baseurl+'deletetransactionbyid',data);
+  }
 }

@@ -29,8 +29,8 @@
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> action </th>
                         <td mat-cell *matCellDef="let row">
                           <div class= "actions">
-                            <button class="btn btn-outline-primary" (click) = "edittransaction()">Edit</button>
-                            <button class="btn btn-outline-danger" (click) = "deletetransaction()">Delete</button>
+                            <button class="btn btn-outline-primary" (click) = "edittransaction(row)">Edit</button>
+                            <button class="btn btn-outline-danger" (click) = "deletetransaction(row)">Delete</button>
                           </div>
                         </td>
                       </div>

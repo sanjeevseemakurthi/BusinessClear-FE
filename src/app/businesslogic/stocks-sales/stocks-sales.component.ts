@@ -20,7 +20,7 @@ export class StocksSalesComponent implements OnInit {
   constructor(private matdailog:MatDialog,private businesslogicService:BusinesslogicService,
     private Dailog:MatDialog) { }
   settings_data = {};
-  displayedColumns = ['name','amount','qty','property','subproperty','action' ]
+  displayedColumns = ['id','initialdate','daylatest','amount','qty','leftamount','leftqty','daystocks','daystockamount','daysales','daysalesamount','action' ]
   settingsalldata = [];
   settingsidmapping = {};
   ngOnInit(): void {
@@ -42,8 +42,8 @@ export class StocksSalesComponent implements OnInit {
         res[element]['property'] = this.settingsidmapping[res[element].settingsid].property;
         res[element]['subproperty'] = this.settingsidmapping[res[element].settingsid].subproperty;
       });
-      console.log(res);
-      this.dataSource =  new MatTableDataSource(loadashclonedeep(res));
+      const sorteddata = this.sortbydate(loadashclonedeep(res));
+      this.dataSource =  new MatTableDataSource(sorteddata);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     } , err => { console.log("error")});
@@ -64,7 +64,7 @@ export class StocksSalesComponent implements OnInit {
      if(result !== "") {
        result['stockflag'] = true;
       this.businesslogicService.addstocks(result).subscribe(res=> {
-        console.log("sucess");
+        this.populatetabledata();
       });
      }
     });
@@ -75,7 +75,7 @@ export class StocksSalesComponent implements OnInit {
      if(result !== "") {
       result['stockflag'] = false;
       this.businesslogicService.addstocks(result).subscribe(res=> {
-        console.log("sucess");
+        this.populatetabledata();
       });
      }
     });
@@ -103,7 +103,7 @@ export class StocksSalesComponent implements OnInit {
       console.log(result);
     })
   }
-  deletetransaction() {
+  deletetransaction(row) {
     const dailogref = this.Dailog.open(AleartdailogboxComponent,
       {
         data: {
@@ -115,7 +115,25 @@ export class StocksSalesComponent implements OnInit {
       }
       );
     dailogref.afterClosed().subscribe(result => {
-      console.log(result);
+      if(result) {
+        this.businesslogicService.deleterecord({id: row.id}).subscribe(res=>{
+          this.populatetabledata();
+        })
+      }
+   
     })
+  }
+  sortbydate(data) {
+    let result = data.sort((a,b) => {
+      const strtDt = new Date(a.initialdate);
+      const endDt = new Date(b.initialdate);
+      if(strtDt >= endDt) {
+        return 1;
+      }  else {
+        return -1;
+      }
+    })
+    console.log(result);
+    return result;
   }
 }
