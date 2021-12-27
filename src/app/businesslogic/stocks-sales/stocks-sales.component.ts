@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { BusinesslogicService } from '../businesslogic.service';
 import { AddStocksDailogComponent } from './add-stocks-dailog/add-stocks-dailog.component';
+import { EditStocksDailogComponent } from './edit-stocks-dailog/edit-stocks-dailog.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -88,20 +89,15 @@ export class StocksSalesComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  edittransaction() {
-    const dailogref = this.Dailog.open(AleartdailogboxComponent,
-      {
-        data: {
-          title: 'edit',
-          message:'you are editinmg',
-          twoevents: false
-        },
-        width: '500px'
-      }
-      );
-    dailogref.afterClosed().subscribe(result => {
-      console.log(result);
-    })
+  edittransaction(row) {
+    let dialogRef = this.matdailog.open(EditStocksDailogComponent, {data:loadashclonedeep(row)});
+    dialogRef.afterClosed().subscribe(result => {
+     if(result !== "") {
+      this.businesslogicService.updaterecord(result).subscribe(res=>{
+        this.populatetabledata();
+      })
+     }
+    });
   }
   deletetransaction(row) {
     const dailogref = this.Dailog.open(AleartdailogboxComponent,

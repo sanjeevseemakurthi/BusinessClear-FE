@@ -1,0 +1,65 @@
+<div class="card">
+    <mat-dialog-content>
+      <form #stockdata="ngForm" validate>
+       <div class="continer-fluid">
+           <div class="row">
+            <div class="col">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name"  [(ngModel)] = "displaydata.name" >
+            </div>
+           </div>
+           <div class="row">
+            <div class="col">
+                <label for="phno">Phoneno</label>
+                <input type= "number" name="phno" id="phno"  [(ngModel)] = "displaydata.phno">
+            </div>
+           </div>
+           <div class="row">
+            <div class="col"> 
+                <label for="property">Property</label>
+                <input type="text" name="property" id="property"  [(ngModel)] = "displaydata.property" disabled>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col"> 
+                <!-- her we have id so changed name  -->
+                <label for="settingsid">SubProperty</label>
+                <input type="text" name="SubProperty" id="settingsid"  [(ngModel)] = "displaydata.subproperty"disabled>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col">
+                <label for="qty">Quantity</label>
+                <input type="number" name="qty" id="qty" required  [(ngModel)] = "displaydata.qty">
+            </div>
+           </div>
+           <div class="row">
+               <div class="col">
+                   <label for="initialdate">Date</label>
+                   <input type="date" name="initialdate" id="initialdate" required  [(ngModel)] = "displaydata.initialdate" disabled>
+               </div>
+           </div>
+           <div class="row">
+            <div class="col">
+                <label for="amount">Amount</label>
+                <input type="number" name="amount" id="amount"  [(ngModel)] = "displaydata.amount">
+            </div>
+           </div>
+           <div class="row">
+            <div class="col">
+                <label for="amountcleared">AmountPaid</label>
+                <input type="number" name="amountcleared" id="amountcleared" required  [(ngModel)] = "displaydata.amountcleared">
+            </div>
+           </div>
+           <div class="row">
+            <div class="col dailogbutton">
+              <button class="d-inline"  [mat-dialog-close] = "displaydata">Submit</button>
+            </div>
+            <div class="col dailogbutton">
+              <button class="d-inline" [mat-dialog-close] = "">Cancel</button>
+            </div>
+          </div>
+       </div>
+      </form>
+    </mat-dialog-content>
+  </div>

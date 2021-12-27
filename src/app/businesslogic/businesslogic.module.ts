@@ -11,8 +11,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule  } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { EditStocksDailogComponent } from './stocks-sales/edit-stocks-dailog/edit-stocks-dailog.component';
 @NgModule({
-  declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent],
+  declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent, EditStocksDailogComponent],
   imports: [
     CommonModule,
     BusinesslogicRoutingModule,

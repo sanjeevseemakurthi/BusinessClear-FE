@@ -31,4 +31,7 @@ export class BusinesslogicService {
   deleterecord(data) {
     return this.httpclient.post(this.baseurl+'deletetransactionbyid',data);
   }
+  updaterecord(data) {
+    return this.httpclient.post(this.baseurl+'editstocks',data);
+  }
 }
