@@ -12,8 +12,11 @@ import {MatFormFieldModule  } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { EditStocksDailogComponent } from './stocks-sales/edit-stocks-dailog/edit-stocks-dailog.component';
+import { AnalyticsComponent } from './analytics/analytics.component';
+import { AgGridModule } from 'ag-grid-angular';
+
 @NgModule({
-  declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent, EditStocksDailogComponent],
+  declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent, EditStocksDailogComponent, AnalyticsComponent],
   imports: [
     CommonModule,
     BusinesslogicRoutingModule,
@@ -23,7 +26,8 @@ import { EditStocksDailogComponent } from './stocks-sales/edit-stocks-dailog/edi
     MatTableModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatInputModule 
+    MatInputModule,
+    AgGridModule.withComponents([])
   ]
 })
 export class BusinesslogicModule { }

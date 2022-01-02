@@ -34,4 +34,8 @@ export class BusinesslogicService {
   updaterecord(data) {
     return this.httpclient.post(this.baseurl+'editstocks',data);
   }
+  // analyticspage 
+  getstocks(data) {
+    return this.httpclient.post(this.baseurl+'getstocks',data);
+  }
 }

@@ -1,6 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 html, body { height: 100%; }
+.Headerclass{
+    font-size: 10px;
+    border-left: 1px solid;
+}
+.Childclass {
+    font-size: 10px;
+    border-left: 1px solid;
+}
+.ag-header-group-cell-label, .ag-header-cell-label {
+    justify-content: center !important;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @font-face {
     font-family: 'Pervitina-Dex';

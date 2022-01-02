@@ -10,6 +10,9 @@ import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthtokenInterceptor } from './authtoken.interceptor';
+
+import { AgGridModule } from 'ag-grid-angular';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,7 +24,8 @@ import { AuthtokenInterceptor } from './authtoken.interceptor';
     BusinesslogicModule,
     BrowserAnimationsModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    AgGridModule.withComponents([])
   ],
   providers: [
     {
