@@ -1,0 +1,6 @@
+<div> {{ titleheader }} </div>
+<div class="mainfilter" [ngClass]="headerstyles">
+    <div *ngFor="let item of filterlist,let i = index">
+        <button class="buttonstyles" [ngClass]="{selectedclass:item.isSelected }" [disabled] = "item.isdisabled"  (click)="elementclicked(item,i)">{{ item.name }}</button>
+    </div>
+</div>

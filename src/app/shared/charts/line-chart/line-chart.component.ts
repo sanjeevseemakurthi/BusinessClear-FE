@@ -8,12 +8,15 @@ import * as d3 from 'd3';
 })
 export class LineChartComponent implements OnInit,OnChanges {
   margin = {top: 10, right: 30, bottom: 30, left: 60};
-  width = 1100;
-  height = 300;
   data= [];
-  @Input() chartocuppancy = [];
+  @Input() chartocuppancy = {
+    width : 1100,
+    height : 300
+  };
   @Input() Data = [];
   @Input() bottomaxis = [];
+  @Input() Stocks = true;
+  @Input() Sales = true;
 
   constructor() { }
   ngOnChanges(_changes: SimpleChanges) {
@@ -29,24 +32,24 @@ export class LineChartComponent implements OnInit,OnChanges {
     d3.select('#my_dataviz').html('');
     let svg = d3.select('#my_dataviz')
     .append("svg")
-      .attr("width", this.width + this.margin.left + this.margin.right)
-      .attr("height", this.height + this.margin.top + this.margin.bottom)
+      .attr("width", this.chartocuppancy.width + this.margin.left + this.margin.right)
+      .attr("height", this.chartocuppancy.height + this.margin.top + this.margin.bottom)
     .append("g")
       .attr("transform",
             "translate(" + this.margin.left + "," + this.margin.top + ")");
     let scalex = d3.scalePoint()
     .domain(Xdomain)
-    .range([0,this.width]);
+    .range([0,this.chartocuppancy.width]);
 
     let scaley = d3.scaleLinear()
     .domain([0,8000])
-    .range([ this.height, 0 ]);
+    .range([ this.chartocuppancy.height, 0 ]);
 
     let xaxis = d3.axisBottom(scalex);
     let yaxis = d3.axisLeft(scaley);
 
     svg.append("g")
-    .attr("transform", "translate(0," + this.height + ")")
+    .attr("transform", "translate(0," + this.chartocuppancy.height + ")")
     .call(xaxis)
 
     svg.append("g")
@@ -54,6 +57,7 @@ export class LineChartComponent implements OnInit,OnChanges {
 
   
   // for stocks  
+  if(this.Stocks) {
   this.Data.forEach(element => {
     svg.append("path")
         .datum(this.bottomaxis)
@@ -71,8 +75,9 @@ export class LineChartComponent implements OnInit,OnChanges {
             }
           }));
     });
-
+  }
  // for sales
+if(this.Sales) {
  this.Data.forEach(element => {
   svg.append("path")
       .datum(this.bottomaxis)
@@ -90,6 +95,7 @@ export class LineChartComponent implements OnInit,OnChanges {
           }
         }));
   });
+}
 
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BusinesslogicService } from '../businesslogic.service';
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import { ColDef } from 'ag-grid-community';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-analytics',
@@ -15,7 +16,40 @@ export class AnalyticsComponent implements OnInit {
   rowHeight = 50;
   columnnames = [];
   graphdata = [];
-  constructor(private businesslogicService:BusinesslogicService) { }
+  settingsdata = {};
+  propertfilter = [];
+  subpropertfilter = [];
+  afterfiltered = [];
+  afterrowdatafiltered = [];
+  stockcolumns = [];
+  salescolumns = [];
+  chartsizes = {
+    width : 1100,
+    height : 300
+  };
+  stocksandsales = [
+    {
+      name:'Stocks',
+      isSelected : true,
+      isdisabled : false,
+    },
+    {
+      name:'Sales',
+      isSelected : true,
+      isdisabled : false,
+    }
+  ];
+  gridapi: any;
+  
+  constructor(private businesslogicService:BusinesslogicService,  breakpointObserver: BreakpointObserver,) {
+
+    breakpointObserver
+    .observe([Breakpoints.Large])
+    .pipe()
+    .subscribe((result) => {
+    
+    });
+   }
   gridOptions = {
   
   }
@@ -23,12 +57,20 @@ export class AnalyticsComponent implements OnInit {
   rowData;
   ngOnInit(): void {
     this.getstockdataforanalysis();
+    this.getsettingdata();
   }
   getstockdataforanalysis() {
     this.businesslogicService.getstocks({}).subscribe(res =>{
       this.analyticsresult = loadashclonedeep(res);
       this.columnDefs  = this.createcolumnDefs();
       this.rowData = this.createrowdata();
+      this.afterrowdatafiltered = loadashclonedeep(this.rowData);
+    });
+  }
+  getsettingdata() {
+    this.businesslogicService.getsettingdata().subscribe(res =>{
+      this.settingsdata = loadashclonedeep(res);
+      this.formfilterdata();
     });
   }
   createrowdata(){
@@ -48,6 +90,30 @@ export class AnalyticsComponent implements OnInit {
       });
     console.log(rownodes);
    return rownodes;
+  }
+  formfilterdata(){
+   
+    let properties = Object.keys(this.settingsdata);
+    properties.forEach(element => {
+      this.settingsdata[element].forEach(node => {
+        let subpropertynode = {
+          name:'',
+          isSelected : true,
+          isdisabled : false,
+          property:element
+        }
+        subpropertynode.name = node.name;
+        this.subpropertfilter.push(subpropertynode);
+      });
+      let propertynode = {
+        name:'',
+        isSelected : true,
+        isdisabled : false,
+      }
+      propertynode.name = element;
+      this.propertfilter.push(propertynode);
+    });
+    this.afterfiltered = loadashclonedeep(this.subpropertfilter);
   }
   createcolumnDefs() {
     const nodes = [];
@@ -91,19 +157,29 @@ export class AnalyticsComponent implements OnInit {
           [
             {
             pinned: 'left',
-            field: '',
-            headerName:'',
+            field: 'property',
+            headerName:'property',
             minWidth: 100,
             maxWidth: 100,
             cellStyle: {color: 'green','font-size':' 12px'},
             headerClass : ['Childclass'],
-        }]  
+          },
+          {
+          pinned: 'left',
+          field: 'subproperty',
+          headerName:'subproperty',
+          minWidth: 100,
+          maxWidth: 100,
+          cellStyle: {color: 'green','font-size':' 12px'},
+          headerClass : ['Childclass'],
+      }]  
         }
+      
         const key = Object.keys(element)[0];
         if(['property','subproperty'].includes(key)) {
-          settingsobj.children[0].field = key;
-          settingsobj.children[0].headerName = key;
-          nodes.push(settingsobj);
+          if('property' === key) {
+            nodes.push(settingsobj);
+          }
         } else {
           colobj.children[0].field = key  +' - stocks';
           colobj.children[1].field = key +' - sales';
@@ -112,10 +188,83 @@ export class AnalyticsComponent implements OnInit {
           colobj.headerName = colobj.headerName + (index - 2);
           nodes.push(colobj);
           this.columnnames.push(key);
+          this.stockcolumns.push(colobj.children[0].field);
+          this.salescolumns.push(colobj.children[1].field);
         }
       });
       console.log(nodes);
     return nodes
     }
+  }
+  onGridReady(params) {
+    this.gridapi = params;
+  }
+  stocksandsaleschange(event) {
+    this.stocksandsales = loadashclonedeep(event.data);
+    let hidecolumns = [];
+    let showecolumns = [];
+    if(event.data[0].isSelected) {
+      showecolumns = loadashclonedeep(this.stockcolumns)
+    } else {
+      hidecolumns = loadashclonedeep(this.stockcolumns)
+    }
+    if(event.data[1].isSelected) {
+      if(showecolumns.length === 0 ) {
+        showecolumns = loadashclonedeep(this.salescolumns)
+      } else {
+        showecolumns = [...this.stockcolumns,...this.salescolumns]
+      }
+    } else {
+      if(hidecolumns.length === 0 ) {
+        hidecolumns = loadashclonedeep(this.salescolumns)
+      } else {
+        hidecolumns = [...this.stockcolumns,...this.salescolumns]
+      }
+    }
+
+    console.log(this.gridapi);
+    this.gridapi.columnApi.setColumnsVisible(showecolumns,true);
+    this.gridapi.columnApi.setColumnsVisible(hidecolumns,false);
+    this.gridapi.columnApi.autoSizeAllColumns();
+  }
+  subpropertiesfiltered(event) {
+    const propertiesselected = [];
+    event.data.forEach(element => {
+      if(element.isSelected) {
+        propertiesselected.push(element.name);
+      }
+    });
+    this.filteronly(propertiesselected);
+  }
+  propertiesfiltered(event){
+    const latestproperty = event.data[event.latestindex].name;
+    if(event.data[event.latestindex].isSelected) {
+      const newdata = loadashclonedeep(this.subpropertfilter.filter(node=> {
+        if(node.property === latestproperty) {
+          return true;
+        } else {
+          return false;
+        }
+      }));
+      this.afterfiltered.push(...newdata);
+    } else {
+      this.afterfiltered = this.afterfiltered.filter(node=> {
+        if(node.property !== latestproperty) {
+          return true;
+        } else {
+          return false;
+        }
+      })
+    }
+    this.subpropertiesfiltered({data:this.afterfiltered});
+  }
+  filteronly(subproperties){
+    this.afterrowdatafiltered = loadashclonedeep(this.rowData.filter(node => {
+        if(subproperties.includes(node.subproperty)) {
+          return true;
+        } else { 
+          return false
+        }}
+      ));
   }
 }

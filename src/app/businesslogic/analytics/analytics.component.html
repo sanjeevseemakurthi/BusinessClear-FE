@@ -1,16 +1,30 @@
 <div class="container-fluid">
     <div class="row">
-        <app-line-chart [bottomaxis] = "columnnames" [Data] = "rowData"></app-line-chart>
+       <div class="col">
+        <app-filter [filterlist] = "propertfilter" titleheader = 'Property' (selecteddata) = "propertiesfiltered($event)"></app-filter>
+       </div>
+       <div class="col">
+        <app-filter [filterlist] = "afterfiltered" titleheader = 'SubProperty' (selecteddata) = "subpropertiesfiltered($event)"></app-filter>
+       </div>
+       <div class="col">
+        <app-filter [filterlist] = "stocksandsales" titleheader = 'Stocks & Sales' (selecteddata) = "stocksandsaleschange($event)"></app-filter>
+       </div>
+    </div>
+    <div class="row card m-1 chartshowing">
+        <app-line-chart [bottomaxis] = "columnnames" [Data] = "afterrowdatafiltered" [Stocks] ="stocksandsales[0].isSelected"
+        [Sales] = "stocksandsales[1].isSelected" [chartocuppancy]="chartsizes"></app-line-chart>
     </div>
     <div class="row" style="height: 80vh;">
         <ag-grid-angular
-        style="width: 100%; height: 100%;"
+        style="width: 100%; height: 100%; border-radius:10px;"
         class="ag-theme-alpine"
-        [rowData]="rowData"
+        [rowData]="afterrowdatafiltered"
         [columnDefs]="columnDefs"
         [gridOptions] = "gridOptions"
         [rowHeight]=30
         [suppressRowTransform]=true
+        domLayout='autoHeight' 
+        (gridReady)="onGridReady($event)"
         >
         </ag-grid-angular>
     </div>

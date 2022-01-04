@@ -1,0 +1,22 @@
+.mainfilter {
+    display: flex;
+}
+.buttonstyles{
+    width: 89px;
+    align-items: center;
+    text-align: center;
+    height: 24px;
+    border-radius: 60px;
+    border-color: skyblue;
+    border-style: dashed;
+    background-color: white;
+    margin: 2px;
+    font-size: 10px;
+}
+.buttonstyles :hover{
+    background-color: blue !important;
+}
+.selectedclass {
+    background-color: skyblue;
+    color: white;
+}

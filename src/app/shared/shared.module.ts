@@ -7,8 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AleartdailogboxComponent } from './aleartdailogbox/aleartdailogbox.component';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
+import { FilterComponent } from './filter/filter.component';
 @NgModule({
-  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent],
+  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -20,7 +21,8 @@ import { LineChartComponent } from './charts/line-chart/line-chart.component';
     NoroutefoundComponent,
     LogindailogComponent,
     MatDialogModule,
-    AleartdailogboxComponent
+    AleartdailogboxComponent,
+    FilterComponent
     
   ]
 })
