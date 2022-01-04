@@ -14,11 +14,14 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { EditStocksDailogComponent } from './stocks-sales/edit-stocks-dailog/edit-stocks-dailog.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent, EditStocksDailogComponent, AnalyticsComponent],
   imports: [
     CommonModule,
+    SharedModule,
     BusinesslogicRoutingModule,
     HttpClientModule,
     FormsModule,

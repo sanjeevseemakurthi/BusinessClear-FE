@@ -38,4 +38,7 @@ export class BusinesslogicService {
   getstocks(data) {
     return this.httpclient.post(this.baseurl+'getstocks',data);
   }
+  getgraphdata(data) {
+    return this.httpclient.post(this.baseurl+'getanalysis',data);
+  }
 }

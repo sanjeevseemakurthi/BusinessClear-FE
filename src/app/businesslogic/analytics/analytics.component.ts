@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BusinesslogicService } from '../businesslogic.service';
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import { ColDef } from 'ag-grid-community';
-import { createOfflineCompileUrlResolver } from '@angular/compiler';
+
 @Component({
   selector: 'app-analytics',
   templateUrl: './analytics.component.html',
@@ -13,6 +13,8 @@ export class AnalyticsComponent implements OnInit {
   coldefcreted:any;
   rowdatacreted:any;
   rowHeight = 50;
+  columnnames = [];
+  graphdata = [];
   constructor(private businesslogicService:BusinesslogicService) { }
   gridOptions = {
   
@@ -109,6 +111,7 @@ export class AnalyticsComponent implements OnInit {
           colobj.headerTooltip = key;
           colobj.headerName = colobj.headerName + (index - 2);
           nodes.push(colobj);
+          this.columnnames.push(key);
         }
       });
       console.log(nodes);

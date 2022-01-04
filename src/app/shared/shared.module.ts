@@ -6,8 +6,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AleartdailogboxComponent } from './aleartdailogbox/aleartdailogbox.component';
+import { LineChartComponent } from './charts/line-chart/line-chart.component';
 @NgModule({
-  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent],
+  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -15,10 +16,12 @@ import { AleartdailogboxComponent } from './aleartdailogbox/aleartdailogbox.comp
     HttpClientModule
   ],
   exports:[
+    LineChartComponent,
     NoroutefoundComponent,
     LogindailogComponent,
     MatDialogModule,
     AleartdailogboxComponent
+    
   ]
 })
 export class SharedModule { }
