@@ -40,9 +40,16 @@ export class LineChartComponent implements OnInit,OnChanges {
     let scalex = d3.scalePoint()
     .domain(Xdomain)
     .range([0,this.chartocuppancy.width]);
-
+    let maxdata = [];
+    this.Data.forEach(element => {
+      let testdata = Object.values(element);
+      testdata.splice(0,1);
+      testdata.splice(0,1);
+      maxdata.push(...testdata);
+    });
+    let maximumvalueforscale = Math.max(...maxdata);
     let scaley = d3.scaleLinear()
-    .domain([0,8000])
+    .domain([0,maximumvalueforscale])
     .range([ this.chartocuppancy.height, 0 ]);
 
     let xaxis = d3.axisBottom(scalex);

@@ -3,6 +3,7 @@ import { BusinesslogicService } from '../businesslogic.service';
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import { ColDef } from 'ag-grid-community';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-analytics',
@@ -27,6 +28,7 @@ export class AnalyticsComponent implements OnInit {
     width : 1100,
     height : 300
   };
+  isChecked = "true";
   stocksandsales = [
     {
       name:'Stocks',
@@ -40,6 +42,8 @@ export class AnalyticsComponent implements OnInit {
     }
   ];
   gridapi: any;
+  amountdata: any;
+  qtydata: any;
   
   constructor(private businesslogicService:BusinesslogicService,  breakpointObserver: BreakpointObserver,) {
 
@@ -56,16 +60,22 @@ export class AnalyticsComponent implements OnInit {
   columnDefs : ColDef[];
   rowData;
   ngOnInit(): void {
-    this.getstockdataforanalysis();
+   
     this.getsettingdata();
+    // this.testclick();
+    this.apicallsfordata();
   }
-  getstockdataforanalysis() {
-    this.businesslogicService.getstocks({}).subscribe(res =>{
-      this.analyticsresult = loadashclonedeep(res);
-      this.columnDefs  = this.createcolumnDefs();
-      this.rowData = this.createrowdata();
-      this.afterrowdatafiltered = loadashclonedeep(this.rowData);
+  apicallsfordata() {
+    let apidata = [];
+    apidata.push(this.businesslogicService.getstocksbyamount({}));
+    apidata.push(this.businesslogicService.getstocksbyqty({}));
+    forkJoin(apidata).subscribe(res => {
+      this.columnDefs  = this.createcolumnDefs(res[0]);
+      this.amountdata  = loadashclonedeep(this.createrowdata(res[0]));
+      this.qtydata = loadashclonedeep(this.createrowdata(res[1]));
+      this.testclick();
     });
+    
   }
   getsettingdata() {
     this.businesslogicService.getsettingdata().subscribe(res =>{
@@ -73,9 +83,9 @@ export class AnalyticsComponent implements OnInit {
       this.formfilterdata();
     });
   }
-  createrowdata(){
+  createrowdata(data){
     const rownodes = [];
-    this.analyticsresult.forEach(node => {
+    data.forEach(node => {
       const subdata = {}
         node.forEach(element => {
           const key = Object.keys(element)[0];
@@ -115,11 +125,11 @@ export class AnalyticsComponent implements OnInit {
     });
     this.afterfiltered = loadashclonedeep(this.subpropertfilter);
   }
-  createcolumnDefs() {
+  createcolumnDefs(data) {
     const nodes = [];
-    if(this.analyticsresult) {
+    if(data) {
       // colum definitons
-      this.analyticsresult[0].forEach((element, index) => {
+      data[0].forEach((element, index) => {
         const colobj = {
           field:'',
           marryChildren : true,
@@ -221,8 +231,6 @@ export class AnalyticsComponent implements OnInit {
         hidecolumns = [...this.stockcolumns,...this.salescolumns]
       }
     }
-
-    console.log(this.gridapi);
     this.gridapi.columnApi.setColumnsVisible(showecolumns,true);
     this.gridapi.columnApi.setColumnsVisible(hidecolumns,false);
     this.gridapi.columnApi.autoSizeAllColumns();
@@ -266,5 +274,14 @@ export class AnalyticsComponent implements OnInit {
           return false
         }}
       ));
+  }
+  testclick(){
+    if(this.isChecked) {
+      this.rowData = loadashclonedeep(this.amountdata);
+    } else {
+      this.rowData = loadashclonedeep(this.qtydata);
+    }
+    this.subpropertiesfiltered({data:this.afterfiltered});
+    this.stocksandsaleschange({data:this.stocksandsales});
   }
 }

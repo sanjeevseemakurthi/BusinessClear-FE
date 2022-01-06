@@ -35,10 +35,10 @@ export class BusinesslogicService {
     return this.httpclient.post(this.baseurl+'editstocks',data);
   }
   // analyticspage 
-  getstocks(data) {
-    return this.httpclient.post(this.baseurl+'getstocks',data);
+  getstocksbyamount(data) {
+    return this.httpclient.post(this.baseurl+'getstockbyamount',data);
   }
-  getgraphdata(data) {
-    return this.httpclient.post(this.baseurl+'getanalysis',data);
+  getstocksbyqty(data) {
+    return this.httpclient.post(this.baseurl+'getstockbyqty',data);
   }
 }

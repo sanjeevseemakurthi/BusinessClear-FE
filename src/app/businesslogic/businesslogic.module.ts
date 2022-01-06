@@ -15,6 +15,7 @@ import { EditStocksDailogComponent } from './stocks-sales/edit-stocks-dailog/edi
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { SharedModule } from '../shared/shared.module';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { SharedModule } from '../shared/shared.module';
     MatFormFieldModule,
     MatPaginatorModule,
     MatInputModule,
+    MatSlideToggleModule,
     AgGridModule.withComponents([])
   ]
 })

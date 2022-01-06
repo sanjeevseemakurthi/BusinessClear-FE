@@ -10,6 +10,22 @@
         <app-filter [filterlist] = "stocksandsales" titleheader = 'Stocks & Sales' (selecteddata) = "stocksandsaleschange($event)"></app-filter>
        </div>
     </div>
+    <div class="row icons">
+        <div class="col iconscol">
+            <div class="glowing-border">
+                <!-- Default switch -->
+                <button style="border: none;">
+                    <img src="../../../assets/images/stock1.png" width="50" height="40">
+                </button>
+            </div>
+            <div>
+                <span>&nbsp;</span>IN Qty <span>&nbsp;</span>
+            </div>
+            <div>
+                <mat-slide-toggle [(ngModel)]="isChecked" (change)="testclick()" >IN    Amount</mat-slide-toggle>
+            </div>
+        </div>
+    </div>
     <div class="row card m-1 chartshowing">
         <app-line-chart [bottomaxis] = "columnnames" [Data] = "afterrowdatafiltered" [Stocks] ="stocksandsales[0].isSelected"
         [Sales] = "stocksandsales[1].isSelected" [chartocuppancy]="chartsizes"></app-line-chart>
