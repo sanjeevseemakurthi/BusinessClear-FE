@@ -8,6 +8,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import {AleartdailogboxComponent} from '../../shared/aleartdailogbox/aleartdailogbox.component';
+import { FileuploadComponent } from 'src/app/shared/fileupload/fileupload.component'; 
 @Component({
   selector: 'app-stocks-sales',
   templateUrl: './stocks-sales.component.html',
@@ -131,5 +132,19 @@ export class StocksSalesComponent implements OnInit {
     })
     console.log(result);
     return result;
+  }
+  bulkupload(){
+    const dailogref = this.Dailog.open(FileuploadComponent,
+      {
+        data: {
+          url: 'upload',
+          templateurl :'download'
+        },
+        width: '500px'
+      }
+      );
+    dailogref.afterClosed().subscribe(result => {
+     console.log(result);
+    })
   }
 }

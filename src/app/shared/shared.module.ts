@@ -8,8 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { AleartdailogboxComponent } from './aleartdailogbox/aleartdailogbox.component';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { FilterComponent } from './filter/filter.component';
+import { FileuploadComponent } from './fileupload/fileupload.component';
 @NgModule({
-  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent],
+  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent, FileuploadComponent],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -22,8 +23,8 @@ import { FilterComponent } from './filter/filter.component';
     LogindailogComponent,
     MatDialogModule,
     AleartdailogboxComponent,
-    FilterComponent
-    
+    FilterComponent,
+    FileuploadComponent
   ]
 })
 export class SharedModule { }

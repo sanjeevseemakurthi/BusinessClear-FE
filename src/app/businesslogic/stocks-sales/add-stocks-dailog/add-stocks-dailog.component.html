@@ -26,7 +26,8 @@
             <div class="col"> 
                 <!-- her we have id so changed name  -->
                 <label for="settingsid">SubProperty</label>
-                <select name="settingsid" id="settingsid" ngModel>
+                <select name="settingsid" id="settingsid" ngModel (change)="subpropertychange($event.target.value)">
+                    <option [value]="-1">None</option>
                     <option *ngFor="let item of subproperties"  [value]="item.id">{{item.name}}</option>
                 </select>
                </div>

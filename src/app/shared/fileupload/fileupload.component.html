@@ -1,0 +1,9 @@
+<h2 mat-dialog-title> {{data.title}} </h2>
+<mat-dialog-content class="mat-typography">
+    <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".xlsx,.csv">
+    <button class="astext" (click)="downloadtemplate()" >download template</button>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="uploadfile()" cdkFocusInitial>Upload</button>
+    <button mat-button [mat-dialog-close] = "false" cdkFocusInitial>cancel</button>
+</mat-dialog-actions>
