@@ -24,10 +24,16 @@ export class AnalyticsComponent implements OnInit {
   afterrowdatafiltered = [];
   stockcolumns = [];
   salescolumns = [];
+  graphselected = true;
   chartsizes = {
     width : 1100,
     height : 300
   };
+  chartsizesreduce = {
+    width : 550,
+    height : 300
+  };
+  reduce
   isChecked = "true";
   stocksandsales = [
     {
@@ -283,5 +289,8 @@ export class AnalyticsComponent implements OnInit {
     }
     this.subpropertiesfiltered({data:this.afterfiltered});
     this.stocksandsaleschange({data:this.stocksandsales});
+  }
+  changegraph(){
+    this.graphselected = !this.graphselected;
   }
 }

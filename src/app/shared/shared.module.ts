@@ -9,8 +9,9 @@ import { AleartdailogboxComponent } from './aleartdailogbox/aleartdailogbox.comp
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { FilterComponent } from './filter/filter.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
+import { PiechartComponent } from './charts/piechart/piechart.component';
 @NgModule({
-  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent, FileuploadComponent],
+  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent, FileuploadComponent, PiechartComponent],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -18,6 +19,7 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
     HttpClientModule
   ],
   exports:[
+    PiechartComponent,
     LineChartComponent,
     NoroutefoundComponent,
     LogindailogComponent,

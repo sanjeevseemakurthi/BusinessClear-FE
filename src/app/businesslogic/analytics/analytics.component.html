@@ -14,7 +14,7 @@
         <div class="col iconscol">
             <div class="glowing-border">
                 <!-- Default switch -->
-                <button style="border: none;">
+                <button style="border: none;" (click)="changegraph()">
                     <img src="../../../assets/images/stock1.png" width="50" height="40">
                 </button>
             </div>
@@ -26,9 +26,18 @@
             </div>
         </div>
     </div>
-    <div class="row card m-1 chartshowing">
+    <div class="row card m-1 chartshowing" *ngIf="graphselected">
         <app-line-chart [bottomaxis] = "columnnames" [Data] = "afterrowdatafiltered" [Stocks] ="stocksandsales[0].isSelected"
         [Sales] = "stocksandsales[1].isSelected" [chartocuppancy]="chartsizes"></app-line-chart>
+    </div>
+    <div class="row card m-1 chartshowing" *ngIf="!graphselected">
+        <div class="col-sm-6" *ngIf="stocksandsales[0].isSelected">
+            <app-piechart [Data] = "afterrowdatafiltered"  [chartocuppancy]="chartsizesreduce"  [testclass]= "'stocks'"></app-piechart>
+        </div>
+        <div class="col-sm-6" *ngIf="stocksandsales[1].isSelected">
+            <app-piechart [Data] = "afterrowdatafiltered"  [chartocuppancy]="chartsizesreduce"  [testclass]= "'sales'"></app-piechart>
+        </div>
+       
     </div>
     <div class="row" style="height: 80vh;">
         <ag-grid-angular
