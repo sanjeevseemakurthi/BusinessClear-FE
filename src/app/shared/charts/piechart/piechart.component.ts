@@ -36,7 +36,7 @@ export class PiechartComponent implements OnInit {
   ngOnInit(): void {
   }
   ngOnChanges(_changes: SimpleChanges) {
-    if(this.Data.length !== 0 && this.testclass !== "") {
+    if(this.Data && this.testclass !== "") {
     setTimeout(() => {
       this.loadchart();
     }, 10);
