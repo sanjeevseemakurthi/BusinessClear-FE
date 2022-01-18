@@ -18,6 +18,6 @@ export class LogindailogComponent implements OnInit {
         sessionStorage.setItem('jwt_businessclear',JSON.stringify(res['jwtToken']));
       }
     },
-    err=>{console.log("error")})
+    err=>{})
   }
 }

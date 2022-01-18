@@ -82,7 +82,6 @@ export class PiechartComponent implements OnInit {
       });
       this.pieData.push(eachnode);
     });
-    console.log(this.pieData);
     this.width = this.chartocuppancy.width/2;
     this.height =  this.chartocuppancy.height;
     this.radius = Math.min(this.width/2, this.height/2-40) / 2;

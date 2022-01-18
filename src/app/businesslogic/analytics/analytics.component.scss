@@ -11,6 +11,7 @@
 }
 .iconscol{
     display: flex;
+    gap: 10px;
     align-items: center;
     justify-content:flex-end
 }
@@ -32,4 +33,17 @@
 }
 .visibilityhide {
     visibility: hidden;
+}
+.datepicker{
+    display: flex;
+    flex-direction: row;
+    
+}
+datepickerchild {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.inputtextnumberstyle {
+    width: 50px;
 }

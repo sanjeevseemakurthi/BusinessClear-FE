@@ -39,6 +39,19 @@
         </div>
        
     </div>
+    <div class="row icons  m-1">
+        <div class="col iconscol">
+            <input type="date" [(ngModel)]="startdate">
+            <input class="inputtextnumberstyle" type="number" [(ngModel)]="noofrows">
+            <select [(ngModel)]="seledctedintervalfromdropdown" (change)="dropdownchange()" >
+                <option value= 1 selected>  Daily</option>
+                <option value= 7> Weekly</option>
+                <option value= 30 >Monthly</option>
+                <option value= 0> custom</option>
+            </select>
+            <input class="inputtextnumberstyle" type="number" [(ngModel)]="seledctedinterval" [disabled]="[1,7,30].includes(seledctedinterval)">
+        </div>
+    </div>
     <div class="row" style="height: 80vh;">
         <ag-grid-angular
         style="width: 100%; height: 100%; border-radius:10px;"

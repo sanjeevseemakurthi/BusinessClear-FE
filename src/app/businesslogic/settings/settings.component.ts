@@ -89,9 +89,6 @@ export class SettingsComponent implements OnInit {
         }
       });
     });
-    console.log(this.deletednodes);
-    console.log(newNodes);
-    console.log(updatenodes);
     let payloads =[];
    if(newNodes.length !== 0) {
     payloads.push( this.businesslogicservice.addsettings(newNodes));
@@ -114,7 +111,7 @@ export class SettingsComponent implements OnInit {
       this.displaydata = Object.keys(this.settings_data).map(data=>{
         return {"name":data,"value":data}
       });
-    } , err => { console.log("error")});
+    } , err => { });
   }
   reset() {
     this.populatedata();

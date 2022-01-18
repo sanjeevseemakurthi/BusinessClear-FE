@@ -15,7 +15,6 @@ export class AddStocksDailogComponent implements OnInit {
     dialogRef.disableClose = true;
     this.properties = Object.keys(this.dailogdata);
     this.assignsubproperties(this.properties[0])
-    console.log(this.dailogdata);
     }
 
   ngOnInit(): void {
@@ -24,6 +23,5 @@ export class AddStocksDailogComponent implements OnInit {
     this.subproperties = this.dailogdata[data];
   }
   subpropertychange(data) {
-    console.log(data);
   }
 }

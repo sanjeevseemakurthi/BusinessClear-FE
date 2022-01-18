@@ -4,6 +4,7 @@ import {cloneDeep as loadashclonedeep} from 'lodash';
 import { ColDef } from 'ag-grid-community';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { forkJoin } from 'rxjs';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-analytics',
@@ -24,6 +25,10 @@ export class AnalyticsComponent implements OnInit {
   afterrowdatafiltered = [];
   stockcolumns = [];
   salescolumns = [];
+  startdate;
+  noofrows = 10;
+  seledctedinterval = 1;
+  seledctedintervalfromdropdown = "1";
   graphselected = true;
   chartsizes = {
     width : 1100,
@@ -59,6 +64,7 @@ export class AnalyticsComponent implements OnInit {
     .subscribe((result) => {
     
     });
+    this.startdate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
    }
   gridOptions = {
   
@@ -104,7 +110,6 @@ export class AnalyticsComponent implements OnInit {
           });
           rownodes.push(subdata);
       });
-    console.log(rownodes);
    return rownodes;
   }
   formfilterdata(){
@@ -208,7 +213,6 @@ export class AnalyticsComponent implements OnInit {
           this.salescolumns.push(colobj.children[1].field);
         }
       });
-      console.log(nodes);
     return nodes
     }
   }
@@ -292,5 +296,8 @@ export class AnalyticsComponent implements OnInit {
   }
   changegraph(){
     this.graphselected = !this.graphselected;
+  }
+  dropdownchange(){
+    this.seledctedinterval = parseInt(this.seledctedintervalfromdropdown,10)
   }
 }

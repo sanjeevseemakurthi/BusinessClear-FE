@@ -36,7 +36,7 @@ export class StocksSalesComponent implements OnInit {
   populatesettingsdata() {
     this.businesslogicService.getsettingdata().subscribe(res => {
       this.settings_data = loadashclonedeep(res);
-    } , err => { console.log("error")});
+    } , err => {});
   }
   populatetabledata() {
     this.businesslogicService.getlatesttransactions({}).subscribe(res => {
@@ -48,7 +48,7 @@ export class StocksSalesComponent implements OnInit {
       this.dataSource =  new MatTableDataSource(sorteddata);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    } , err => { console.log("error")});
+    } , err => {});
   }
   populateallsettingsdata(){
     this.businesslogicService.getSettingsall().subscribe(res => {
@@ -57,8 +57,7 @@ export class StocksSalesComponent implements OnInit {
       this.settingsalldata.forEach(element => {
         this.settingsidmapping[element.id] = element;
       });
-      console.log(this.settingsidmapping);
-    } , err => { console.log("error")});
+    } , err => {});
   }
   addstock() {
     let dialogRef = this.matdailog.open(AddStocksDailogComponent, {data:this.settings_data});
@@ -130,7 +129,6 @@ export class StocksSalesComponent implements OnInit {
         return -1;
       }
     })
-    console.log(result);
     return result;
   }
   bulkupload(){
@@ -144,7 +142,6 @@ export class StocksSalesComponent implements OnInit {
       }
       );
     dailogref.afterClosed().subscribe(result => {
-     console.log(result);
     })
   }
 }
