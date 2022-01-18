@@ -25,16 +25,12 @@ export class FileuploadComponent implements OnInit {
   }
   uploadfile() {
     this.sharedservice.fileupload(this.data.url,this.filedata).subscribe(res=> {
-      console.log(res, "uploadedsucess")
     },err =>{
-      console.log("fail");
     });
   }
   downloadtemplate(){
     this.sharedservice.filedownload(this.data.templateurl).subscribe(res=> {
-      console.log(res);
       this.sharedservice.downloadfile(res);
-      console.log(res, "downloadsucess")
     },err =>{
     
     });
