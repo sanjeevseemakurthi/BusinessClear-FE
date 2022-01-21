@@ -28,6 +28,7 @@ export class LineChartComponent implements OnInit,OnChanges {
   ngOnInit(): void {
   }
   loadchart(){
+    this.chartocuppancy.width = 120 * this.bottomaxis.length;
     let Xdomain = this.bottomaxis;
     d3.select('#my_dataviz').html('');
     let svg = d3.select('#my_dataviz')

@@ -26,6 +26,20 @@
             </div>
         </div>
     </div>
+    <div class="row icons  m-1">
+        <div class="col iconscol">
+            <input type="date" [(ngModel)]="startdate">
+            <input class="inputtextnumberstyle" type="number" [(ngModel)]="noofrows">
+            <select [(ngModel)]="seledctedintervalfromdropdown" (change)="dropdownchange()" >
+                <option value= 1 selected>  Daily</option>
+                <option value= 7> Weekly</option>
+                <option value= 30 >Monthly</option>
+                <option value= 0> custom</option>
+            </select>
+            <input class="inputtextnumberstyle" type="number" [(ngModel)]="seledctedinterval" [disabled]="[1,7,30].includes(seledctedinterval)">
+            <button class="applybutton" (click) ="apicallsfordata()">Apply</button>
+        </div>
+    </div>
     <div class="row card m-1 chartshowing" *ngIf="graphselected">
         <app-line-chart [bottomaxis] = "columnnames" [Data] = "afterrowdatafiltered" [Stocks] ="stocksandsales[0].isSelected"
         [Sales] = "stocksandsales[1].isSelected" [chartocuppancy]="chartsizes"></app-line-chart>
@@ -38,19 +52,6 @@
             <app-piechart [Data] = "afterrowdatafiltered"  [chartocuppancy]="chartsizesreduce"  [testclass]= "'sales'"></app-piechart>
         </div>
        
-    </div>
-    <div class="row icons  m-1">
-        <div class="col iconscol">
-            <input type="date" [(ngModel)]="startdate">
-            <input class="inputtextnumberstyle" type="number" [(ngModel)]="noofrows">
-            <select [(ngModel)]="seledctedintervalfromdropdown" (change)="dropdownchange()" >
-                <option value= 1 selected>  Daily</option>
-                <option value= 7> Weekly</option>
-                <option value= 30 >Monthly</option>
-                <option value= 0> custom</option>
-            </select>
-            <input class="inputtextnumberstyle" type="number" [(ngModel)]="seledctedinterval" [disabled]="[1,7,30].includes(seledctedinterval)">
-        </div>
     </div>
     <div class="row" style="height: 80vh;">
         <ag-grid-angular

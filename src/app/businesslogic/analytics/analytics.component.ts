@@ -31,7 +31,7 @@ export class AnalyticsComponent implements OnInit {
   seledctedintervalfromdropdown = "1";
   graphselected = true;
   chartsizes = {
-    width : 1100,
+    width : 2100,
     height : 300
   };
   chartsizesreduce = {
@@ -78,9 +78,14 @@ export class AnalyticsComponent implements OnInit {
     this.apicallsfordata();
   }
   apicallsfordata() {
+    let payload = {
+      startdate:this.startdate,
+      intevalnumber:this.noofrows,
+      interval:this.seledctedinterval
+    }
     let apidata = [];
-    apidata.push(this.businesslogicService.getstocksbyamount({}));
-    apidata.push(this.businesslogicService.getstocksbyqty({}));
+    apidata.push(this.businesslogicService.getstocksbyamount(payload));
+    apidata.push(this.businesslogicService.getstocksbyqty(payload));
     forkJoin(apidata).subscribe(res => {
       this.columnDefs  = this.createcolumnDefs(res[0]);
       this.amountdata  = loadashclonedeep(this.createrowdata(res[0]));
@@ -137,6 +142,7 @@ export class AnalyticsComponent implements OnInit {
     this.afterfiltered = loadashclonedeep(this.subpropertfilter);
   }
   createcolumnDefs(data) {
+    this.columnnames = [];
     const nodes = [];
     if(data) {
       // colum definitons
