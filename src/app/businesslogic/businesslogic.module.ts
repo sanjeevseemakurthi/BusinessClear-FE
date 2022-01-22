@@ -16,6 +16,7 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { SharedModule } from '../shared/shared.module';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatInputModule,
     MatSlideToggleModule,
     AgGridModule.withComponents([])
-  ]
+  ],
+  providers:[AuthGuard]
 })
 export class BusinesslogicModule { }
