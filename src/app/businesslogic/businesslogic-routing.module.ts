@@ -9,26 +9,10 @@ const routes: Routes = [
   {
     path:'',
     component:SidenavComponent,
-  },
-  {
-    path:'settings',
-    component:SidenavComponent,
     children: [
-      { path:'', component:SettingsComponent, outlet:'logic' }
-    ]
-  },
-  {
-    path:'Stocks-Sales',
-    component:SidenavComponent,
-    children: [
-      { path:'', component:StocksSalesComponent, outlet:'logic' }
-    ]
-  },
-  {
-    path:'Analysis',
-    component:SidenavComponent,
-    children: [
-      { path:'', component:AnalyticsComponent, outlet:'logic' }
+      { path:'settings', component:SettingsComponent},
+      { path:'Stocks-Sales', component:StocksSalesComponent},
+      { path:'Analysis', component:AnalyticsComponent}
     ]
   },
 ];
