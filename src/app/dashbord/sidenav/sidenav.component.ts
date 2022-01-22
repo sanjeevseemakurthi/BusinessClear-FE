@@ -20,7 +20,7 @@ export class SidenavComponent implements OnInit {
       name : 'Home'
     },
     {
-      icon :' fa-home',
+      icon :'fa-chart-bar',
       name : 'Analysis'
     },
     {
