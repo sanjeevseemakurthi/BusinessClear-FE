@@ -17,10 +17,11 @@ import { AgGridModule } from 'ag-grid-angular';
 import { SharedModule } from '../shared/shared.module';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
-  declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent, EditStocksDailogComponent, AnalyticsComponent],
+  declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent],
   imports: [
     CommonModule,
     SharedModule,

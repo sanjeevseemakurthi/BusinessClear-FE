@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 @Component({
   selector: 'app-logindailog',
@@ -7,7 +8,7 @@ import { SharedService } from '../shared.service';
 })
 export class LogindailogComponent implements OnInit {
 
-  constructor(public sharedservice:SharedService) { }
+  constructor(public sharedservice:SharedService,public router:Router) { }
   login = "demo";
   password = "demo";
   ngOnInit(): void {
@@ -16,6 +17,7 @@ export class LogindailogComponent implements OnInit {
     this.sharedservice.login(this.login,this.password).subscribe( res => {
       if(res && res['jwtToken']) { 
         sessionStorage.setItem('jwt_businessclear',JSON.stringify(res['jwtToken']));
+        this.router.navigate(['businesslogic/Home']);
       }
     },
     err=>{})
