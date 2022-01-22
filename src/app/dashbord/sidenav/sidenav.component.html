@@ -14,7 +14,7 @@
                   <i class="fa fa-lg" [ngClass]="item.icon"></i>
                 </div>
                 <div class="sidenav-content-menu-name">
-                  <a [href]="item.navigation">{{item.name}}</a>
+                 <BUtton class = "labelbutton" (click) = "changeroute(item.name)">{{item.name}}</BUtton>
                 </div>
               </div>
             </div>

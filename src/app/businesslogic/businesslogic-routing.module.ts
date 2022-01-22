@@ -18,14 +18,14 @@ const routes: Routes = [
     ]
   },
   {
-    path:'stocks-sales',
+    path:'Stocks-Sales',
     component:SidenavComponent,
     children: [
       { path:'', component:StocksSalesComponent, outlet:'logic' }
     ]
   },
   {
-    path:'anayltics',
+    path:'Analysis',
     component:SidenavComponent,
     children: [
       { path:'', component:AnalyticsComponent, outlet:'logic' }

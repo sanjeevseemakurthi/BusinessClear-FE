@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { LogindailogComponent } from 'src/app/shared/logindailog/logindailog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -12,40 +13,38 @@ export class SidenavComponent implements OnInit {
   showFiller = false;
   sidenavtoggle = true;
   imageurl = '';
+  baseurl;
   menuitems = [
     {
       icon :'fa-home',
-      name : 'Home',
-      navigateto : '../Home'
+      name : 'Home'
     },
     {
       icon :' fa-home',
-      name : 'Analysis',
-      navigateto : '../dashbord'
+      name : 'Analysis'
     },
     {
       icon :'fa-home',
-      name : 'Stocks/Sales',
-      navigateto : '../stocksandsales'
+      name : 'Stocks-Sales'
     },
     {
       icon :'fa-home',
-      name : 'Lent',
-      navigateto : '../Lent'
+      name : 'Lent'
     },
     {
       icon :'fa-home',
-      name : 'settings',
-      navigateto : '../settings'
+      name : 'settings'
     }
   ]
-  constructor( breakpointObserver: BreakpointObserver,public dailog:MatDialog) {
+  constructor( breakpointObserver: BreakpointObserver,public dailog:MatDialog ,public router:Router) {
     breakpointObserver
     .observe([Breakpoints.Large])
     .pipe()
     .subscribe((result) => {
       this.islargescreen = result.matches;
     });
+    this.baseurl = this.router.url;
+    console.log(this.baseurl);
    }
 
   ngOnInit(): void {
@@ -58,5 +57,8 @@ loginpopup() {
   const dialogRef = this.dailog.open(LogindailogComponent);
   dialogRef.afterClosed().subscribe(result => {
     });
+  }
+  changeroute(url) {
+    this.router.navigate(['businesslogic/'+url])
   }
 }
