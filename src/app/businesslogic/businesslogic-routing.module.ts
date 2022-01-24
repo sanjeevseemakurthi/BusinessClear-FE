@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SidenavComponent } from '../dashbord/sidenav/sidenav.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { AuthGuard } from './auth.guard';
+import { FinanceComponent } from './finance/finance.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { StocksSalesComponent } from './stocks-sales/stocks-sales.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
       { path:'settings', component:SettingsComponent, canActivate : [AuthGuard]},
       { path:'Stocks-Sales', component:StocksSalesComponent, canActivate : [AuthGuard]},
       { path:'Analysis', component:AnalyticsComponent, canActivate : [AuthGuard]},
-      { path:'Home' , component:HomeComponent, canActivate : [AuthGuard]}
+      { path:'Home' , component:HomeComponent, canActivate : [AuthGuard]},
+      { path:'finance' , component:FinanceComponent, canActivate : [AuthGuard]}
     ],
     canActivate : [AuthGuard]
   },

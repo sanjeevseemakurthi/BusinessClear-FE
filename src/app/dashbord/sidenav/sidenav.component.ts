@@ -32,6 +32,10 @@ export class SidenavComponent implements OnInit {
       name : 'Lent'
     },
     {
+      icon :'fa-money',
+      name : 'finance'
+    },
+    {
       icon :'fa-cog',
       name : 'settings'
     }
