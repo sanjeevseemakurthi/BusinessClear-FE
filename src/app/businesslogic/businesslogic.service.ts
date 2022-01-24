@@ -41,4 +41,7 @@ export class BusinesslogicService {
   getstocksbyqty(data) {
     return this.httpclient.post(this.baseurl+'getstockbyqty',data);
   }
+  getperson(){
+    return this.httpclient.get(this.baseurl+'getperson')
+  }
 }

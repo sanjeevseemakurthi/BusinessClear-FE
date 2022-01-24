@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { BusinesslogicService } from '../businesslogic.service';
+import {cloneDeep as loadashclonedeep} from 'lodash';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-finance',
@@ -7,9 +12,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinanceComponent implements OnInit {
 
-  constructor() { }
-
+  dataSource: any;
+  filter = '';
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  persons_data: any;
+  constructor(private businesslogicService:BusinesslogicService) { }
+  displayedColumns = ['accno','name','fatherorhusbandname','village',]
   ngOnInit(): void {
+    this.populatepeopledata();
   }
+  populatepeopledata() {
+    this.businesslogicService.getperson().subscribe(res => {
+      this.dataSource =  new MatTableDataSource(res['persons']);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    } , err => {});
+  }
+  edittransaction(row){
 
+  }
+  deletetransaction(row){
+
+  }
+  applyFilter(event: Event) {
+    console.log("hi")
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 }
