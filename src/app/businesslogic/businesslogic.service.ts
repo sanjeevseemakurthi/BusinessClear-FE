@@ -44,4 +44,10 @@ export class BusinesslogicService {
   getperson(){
     return this.httpclient.get(this.baseurl+'getperson')
   }
+  getpersonfinance(data){
+    return this.httpclient.post(this.baseurl+'getpersonfinance',data);
+  }
+  updatepersondetials(data){
+    return this.httpclient.post(this.baseurl+'updatepersondetials',data);
+  }
 }

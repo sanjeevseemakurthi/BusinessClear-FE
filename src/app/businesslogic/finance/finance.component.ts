@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { BusinesslogicService } from '../businesslogic.service';
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-finance',
@@ -17,7 +18,7 @@ export class FinanceComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   persons_data: any;
-  constructor(private businesslogicService:BusinesslogicService) { }
+  constructor(private businesslogicService:BusinesslogicService, public router:Router) { }
   displayedColumns = ['accno','name','fatherorhusbandname','village',]
   ngOnInit(): void {
     this.populatepeopledata();
@@ -43,5 +44,8 @@ export class FinanceComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  rowclicked(row) {
+    this.router.navigate(['businesslogic/finance/person'],{queryParams:{pid:row.id}})
   }
 }
