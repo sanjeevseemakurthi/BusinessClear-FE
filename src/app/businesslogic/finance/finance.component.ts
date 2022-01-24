@@ -30,12 +30,6 @@ export class FinanceComponent implements OnInit {
       this.dataSource.sort = this.sort;
     } , err => {});
   }
-  edittransaction(row){
-
-  }
-  deletetransaction(row){
-
-  }
   applyFilter(event: Event) {
     console.log("hi")
     const filterValue = (event.target as HTMLInputElement).value;
