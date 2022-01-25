@@ -15,3 +15,13 @@ table {
   td, th {
     width: 10%;
   }
+.headerstyle{
+  display: flex;
+  font-size: 50px;
+  align-items: baseline;
+  height: 50px;
+}
+.buttondisplaybottom{
+  display: flex;
+  justify-content: flex-end;
+}

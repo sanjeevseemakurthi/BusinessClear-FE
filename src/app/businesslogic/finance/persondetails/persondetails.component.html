@@ -3,52 +3,48 @@
         <div class="col-sm-4">
             <div class="row card p-2">
                <div class="col">
-                    <form  #persondetails = "ngForm">
-                        <div class="combinelabel">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" [(ngModel)] = "persondata.name" [disabled] = "!persondetailsedit">
-                        </div>
-                        <div class = "combinelabel">
-                            <label for="fatherorhusbandname">Father/husbandname</label>
-                            <input type="text" name="fatherorhusbandname" id="fatherorhusbandname" [(ngModel)] = "persondata.fatherorhusbandname" [disabled] = "!persondetailsedit">
-                        </div>
-                        <div class = "combinelabel">
-                            <label for="accno">accno</label>
-                            <input type="number" name="accno" id="accno" [(ngModel)] = "persondata.accno" [disabled] = "!persondetailsedit">
-                        </div>
-                        <div class = "combinelabel">
-                            <label for="phoneno">phoneno</label>
-                            <input type="text" name="phoneno" id="phoneno" [(ngModel)] = "persondata.phoneno" [disabled] = "!persondetailsedit">
-                        </div>
-                        <div class = "combinelabel">
-                            <label for="village">village</label>
-                            <input type="text" name="village" id="village" [(ngModel)] = "persondata.village" [disabled] = "!persondetailsedit">
-                        </div>
-                        <div class = "combinelabel">
-                            <label for="address1">address1</label>
-                            <input type="text" name="address1" id="address1" [(ngModel)] = "persondata.address1" [disabled] = "!persondetailsedit">
-                        </div>
-                        <div class = "combinelabel">
-                            <label for="address2">address2</label>
-                            <input type="text" name="address2" id="address2" [(ngModel)] = "persondata.address2" [disabled] = "!persondetailsedit">
-                        </div> 
-                        <div class = "combinelabel">
-                            <label for="country">country</label>
-                            <input type="text" name="country" id="country" [(ngModel)] = "persondata.country" [disabled] = "!persondetailsedit">
-                        </div> 
-                        <div class = "combinelabel">
-                            <label for="pincode">pincode</label>
-                            <input type="text" name="pincode" id="pincode" [(ngModel)] = "persondata.pincode" [disabled] = "!persondetailsedit">
-                        </div>
-                        <div class = "combinelabel">
-                            <div></div>
-                            <button *ngIf="!persondetailsedit" type="button" class="btn btn-primary mt-2" style="width: 100px;" (click)="editpage()">Edit</button>
-                            <button *ngIf="persondetailsedit" type="button" class="btn btn-secondary mt-2" style="width: 100px;" (click)="submitpage()">Submit</button>
-
-                        </div>
-                    </form>
+                    <div class="combinelabel">
+                        <label for="names">Name</label>
+                        <input type="text" name="names" id="names" [(ngModel)] = "persondata.name" [disabled] = "!persondetailsedit">
+                    </div>
+                    <div class = "combinelabel">
+                        <label for="fatherorhusbandname">Father/husbandname</label>
+                        <input type="text" name="fatherorhusbandname" id="fatherorhusbandname" [(ngModel)] = "persondata.fatherorhusbandname" [disabled] = "!persondetailsedit">
+                    </div>
+                    <div class = "combinelabel">
+                        <label for="accno">accno</label>
+                        <input type="number" name="accno" id="accno" [(ngModel)] = "persondata.accno" [disabled] = "!persondetailsedit">
+                    </div>
+                    <div class = "combinelabel">
+                        <label for="phoneno">phoneno</label>
+                        <input type="text" name="phoneno" id="phoneno" [(ngModel)] = "persondata.phoneno" [disabled] = "!persondetailsedit">
+                    </div>
+                    <div class = "combinelabel">
+                        <label for="village">village</label>
+                        <input type="text" name="village" id="village" [(ngModel)] = "persondata.village" [disabled] = "!persondetailsedit">
+                    </div>
+                    <div class = "combinelabel">
+                        <label for="address1">address1</label>
+                        <input type="text" name="address1" id="address1" [(ngModel)] = "persondata.address1" [disabled] = "!persondetailsedit">
+                    </div>
+                    <div class = "combinelabel">
+                        <label for="address2">address2</label>
+                        <input type="text" name="address2" id="address2" [(ngModel)] = "persondata.address2" [disabled] = "!persondetailsedit">
+                    </div> 
+                    <div class = "combinelabel">
+                        <label for="country">country</label>
+                        <input type="text" name="country" id="country" [(ngModel)] = "persondata.country" [disabled] = "!persondetailsedit">
+                    </div> 
+                    <div class = "combinelabel">
+                        <label for="pincode">pincode</label>
+                        <input type="text" name="pincode" id="pincode" [(ngModel)] = "persondata.pincode" [disabled] = "!persondetailsedit">
+                    </div>
+                    <div class = "combinelabel">
+                        <div></div>
+                        <button *ngIf="!persondetailsedit" type="button" class="btn btn-primary mt-2" style="width: 100px;" (click)="editpage()">Edit</button>
+                        <button *ngIf="persondetailsedit" type="button" class="btn btn-secondary mt-2" style="width: 100px;" (click)="submitpage()">Submit</button>
+                    </div>
                </div>
-
             </div>
             <div class="row">
                 <div class="col">
@@ -75,8 +71,61 @@
                 </div>
             </div>
         </div>
-        <div class="col card" >
-          
+        <div class="col" >
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary" style="width: 250px;" (click) = "addnewfinance()">Add-new finance</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col  m-2 mt-5 headerstyle">
+                 {{titlforoperations}}
+                </div>
+            </div>
+            <div class="row" *ngIf="showfinance">
+                <div class="col card m-2">
+               
+                    <div class="combinelabel">
+                        <label for="qty">Qty</label>
+                        <input type="text" name="qty" id="qty" [(ngModel)] = "financedata.qty">
+                    </div>
+                    <div class = "combinelabel">
+                        <label for="amount">Amount</label>
+                        <input type="text" name="amount" id="amount" [(ngModel)] = "financedata.amount">
+                    </div>
+                    <div class = "combinelabel">
+                        <label for="item">Item</label>
+                        <input type="text" name="item" id="item" [(ngModel)] = "financedata.item">
+                    </div>
+                    <div class = "combinelabel">
+                        <label for="sno">sno</label>
+                        <input type="number" name="sno" id="sno" [(ngModel)] = "financedata.sno">
+                    </div>
+                    <div class = "combinelabel">
+                        <label for="date">Date</label>
+                        <input type="date" name="date" id="date" [(ngModel)] = "financedata.date">
+                    </div>
+                    <ng-container *ngFor="let item of financedata.deposits; let i=index;let j =last" >
+                        <div class = "combinelabel">
+                            Deposit {{i}}
+                            <label>Date</label>
+                            <input type="date" [(ngModel)] = "item.date">
+                            <label>Amount</label>
+                            <input type="number" [(ngModel)] = "item.amount">
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="row"  *ngIf="showfinance">
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row " *ngIf="showfinance">
+                <div class="col buttondisplaybottom">
+                    <button style="margin-right: 5px;" *ngIf="editfinance">Caluclate Finance</button>
+                    <button (click) = "submitdata()">Submit</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

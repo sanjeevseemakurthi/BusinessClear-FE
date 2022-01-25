@@ -5,6 +5,7 @@ import {cloneDeep as loadashclonedeep} from 'lodash';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { tree } from 'd3';
 
 @Component({
   selector: 'app-persondetails',
@@ -19,6 +20,29 @@ export class PersondetailsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   persondata:any;
+  titlforoperations = "";
+  financedatanew = {
+    "item": "",
+    "amount": 0,
+    "sno": 0,
+    "qty": 0,
+    "date":'',
+    "isactive": true,
+    "deposits":[]
+  }
+  financedata = {
+    "item": "",
+    "amount": 0,
+    "sno": 0,
+    "qty": 0,
+    "date":'',
+    "isactive": true,
+    "deposits":[]
+  }
+  showfinance = false;
+  editfinance = false;
+  financecaluclate = false;
+  intreast = 12;
   persondetailsedit = false;
   pid;
   displayedColumns = ['id', 'item', 'date', 'amount'];
@@ -57,6 +81,43 @@ export class PersondetailsComponent implements OnInit {
     }
   }
   rowclicked(row) {
-    this.router.navigate(['businesslogic/finance/person'],{queryParams:{pid:row.id}})
+    console.log(row);
+    if(row.deposits === undefined){
+      row.deposits = [];
+    }
+    this.showfinance = true;
+    this.editfinance = true;
+    this.financedata = loadashclonedeep(row);
+    this.titlforoperations = "Edit Finance";
+
+  }
+  addnewfinance(){
+    this.showfinance = true;
+    this.editfinance = false;
+    this.financedata = loadashclonedeep(this.financedatanew);
+    this.titlforoperations = "Add new Finance";
+  }
+  newdeposit(){
+    let j = {
+      date: "",
+      amount:0
+    };
+    this.financedata.deposits.push(j);
+  }
+  submitdata(){
+    this.financedata['pid'] = this.pid; 
+    this.businesslogicService.addfintoexistingpeople(this.financedata).subscribe( res =>
+      {
+        this.populatepersondetail();
+        this.showfinance = false;
+        this.titlforoperations = ""
+      });
+  }
+  caluclatefinance(){
+    this.financecaluclate = !this.financecaluclate;
+  }
+  caluclateintreast(amount,date) {
+    console.log(amount,date);
+    return "sanju";
   }
 }

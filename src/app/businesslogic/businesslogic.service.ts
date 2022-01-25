@@ -53,4 +53,7 @@ export class BusinesslogicService {
   addnewpersonfin(data){
     return this.httpclient.post(this.baseurl+'addnewpersonfin',data);
   }
+  addfintoexistingpeople(data) {
+    return this.httpclient.post(this.baseurl+'addfintoexistingpeople',data);
+  }
 }
