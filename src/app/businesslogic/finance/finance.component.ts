@@ -42,4 +42,7 @@ export class FinanceComponent implements OnInit {
   rowclicked(row) {
     this.router.navigate(['businesslogic/finance/person'],{queryParams:{pid:row.id}})
   }
+  addnewperson(){
+    this.router.navigate(['businesslogic/finance/newperson']);
+  }
 }

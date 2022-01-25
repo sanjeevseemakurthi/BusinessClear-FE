@@ -4,6 +4,7 @@ import { SidenavComponent } from '../dashbord/sidenav/sidenav.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { AuthGuard } from './auth.guard';
 import { FinanceComponent } from './finance/finance.component';
+import { NewpersonfinanceComponent } from './finance/newpersonfinance/newpersonfinance.component';
 import { PersondetailsComponent } from './finance/persondetails/persondetails.component';
 import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
         children: [
           { path:'' , component:FinanceComponent, canActivate : [AuthGuard]},
           { path:'person' , component:PersondetailsComponent, canActivate : [AuthGuard]},
+          { path:'newperson' , component:NewpersonfinanceComponent, canActivate : [AuthGuard]}
         ],
         canActivate : [AuthGuard]}
     ],

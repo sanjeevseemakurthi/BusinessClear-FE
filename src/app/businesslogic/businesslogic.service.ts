@@ -50,4 +50,7 @@ export class BusinesslogicService {
   updatepersondetials(data){
     return this.httpclient.post(this.baseurl+'updatepersondetials',data);
   }
+  addnewpersonfin(data){
+    return this.httpclient.post(this.baseurl+'addnewpersonfin',data);
+  }
 }

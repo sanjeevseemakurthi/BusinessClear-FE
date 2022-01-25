@@ -20,10 +20,11 @@ import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
 import { FinanceComponent } from './finance/finance.component';
 import { PersondetailsComponent } from './finance/persondetails/persondetails.component';
+import { NewpersonfinanceComponent } from './finance/newpersonfinance/newpersonfinance.component';
 
 
 @NgModule({
-  declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent, FinanceComponent, PersondetailsComponent],
+  declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent, FinanceComponent, PersondetailsComponent, NewpersonfinanceComponent],
   imports: [
     CommonModule,
     SharedModule,
