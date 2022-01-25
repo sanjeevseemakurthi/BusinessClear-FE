@@ -25,3 +25,12 @@ table {
   display: flex;
   justify-content: flex-end;
 }
+.intreastrow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+.namewidth{
+  width: 100px;
+}

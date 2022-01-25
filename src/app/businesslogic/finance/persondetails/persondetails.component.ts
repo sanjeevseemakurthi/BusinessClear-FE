@@ -5,6 +5,7 @@ import {cloneDeep as loadashclonedeep} from 'lodash';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { DatePipe, formatDate } from '@angular/common';
 import { tree } from 'd3';
 
 @Component({
@@ -28,7 +29,8 @@ export class PersondetailsComponent implements OnInit {
     "qty": 0,
     "date":'',
     "isactive": true,
-    "deposits":[]
+    "deposits":[],
+    "giveextra":[]
   }
   financedata = {
     "item": "",
@@ -37,12 +39,14 @@ export class PersondetailsComponent implements OnInit {
     "qty": 0,
     "date":'',
     "isactive": true,
-    "deposits":[]
+    "deposits":[],
+    "giveextra":[]
   }
   showfinance = false;
   editfinance = false;
   financecaluclate = false;
-  intreast = 12;
+  intreastrate = 12;
+  intreastfinaldate;
   persondetailsedit = false;
   pid;
   displayedColumns = ['id', 'item', 'date', 'amount'];
@@ -50,6 +54,7 @@ export class PersondetailsComponent implements OnInit {
     this.activeroute.queryParamMap.subscribe(res=>{
       this.pid = res['params'].pid;
     })
+    this.intreastfinaldate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
     this.populatepersondetail();
   }
   editpage() {
@@ -85,6 +90,9 @@ export class PersondetailsComponent implements OnInit {
     if(row.deposits === undefined){
       row.deposits = [];
     }
+    if(row.giveextra === undefined) {
+      row.giveextra = [];
+    }
     this.showfinance = true;
     this.editfinance = true;
     this.financedata = loadashclonedeep(row);
@@ -104,12 +112,20 @@ export class PersondetailsComponent implements OnInit {
     };
     this.financedata.deposits.push(j);
   }
+  newgiveextra() {
+    let j = {
+      date: "",
+      amount:0
+    };
+    this.financedata.giveextra.push(j);
+  }
   submitdata(){
     this.financedata['pid'] = this.pid; 
     this.businesslogicService.addfintoexistingpeople(this.financedata).subscribe( res =>
       {
         this.populatepersondetail();
         this.showfinance = false;
+        this.editfinance = false;
         this.titlforoperations = ""
       });
   }

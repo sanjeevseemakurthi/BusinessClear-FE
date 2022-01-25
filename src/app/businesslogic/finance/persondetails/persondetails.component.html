@@ -4,40 +4,40 @@
             <div class="row card p-2">
                <div class="col">
                     <div class="combinelabel">
-                        <label for="names">Name</label>
-                        <input type="text" name="names" id="names" [(ngModel)] = "persondata.name" [disabled] = "!persondetailsedit">
+                        <label>Name</label>
+                        <input type="text" [(ngModel)] = "persondata.name" [disabled] = "!persondetailsedit">
                     </div>
                     <div class = "combinelabel">
-                        <label for="fatherorhusbandname">Father/husbandname</label>
-                        <input type="text" name="fatherorhusbandname" id="fatherorhusbandname" [(ngModel)] = "persondata.fatherorhusbandname" [disabled] = "!persondetailsedit">
+                        <label>Father/husbandname</label>
+                        <input type="text" [(ngModel)] = "persondata.fatherorhusbandname" [disabled] = "!persondetailsedit">
                     </div>
                     <div class = "combinelabel">
-                        <label for="accno">accno</label>
-                        <input type="number" name="accno" id="accno" [(ngModel)] = "persondata.accno" [disabled] = "!persondetailsedit">
+                        <label>accno</label>
+                        <input type="number" [(ngModel)] = "persondata.accno" [disabled] = "!persondetailsedit">
                     </div>
                     <div class = "combinelabel">
-                        <label for="phoneno">phoneno</label>
-                        <input type="text" name="phoneno" id="phoneno" [(ngModel)] = "persondata.phoneno" [disabled] = "!persondetailsedit">
+                        <label>phoneno</label>
+                        <input type="text"  [(ngModel)] = "persondata.phoneno" [disabled] = "!persondetailsedit">
                     </div>
                     <div class = "combinelabel">
-                        <label for="village">village</label>
-                        <input type="text" name="village" id="village" [(ngModel)] = "persondata.village" [disabled] = "!persondetailsedit">
+                        <label>village</label>
+                        <input type="text"[(ngModel)] = "persondata.village" [disabled] = "!persondetailsedit">
                     </div>
                     <div class = "combinelabel">
-                        <label for="address1">address1</label>
-                        <input type="text" name="address1" id="address1" [(ngModel)] = "persondata.address1" [disabled] = "!persondetailsedit">
+                        <label>address1</label>
+                        <input type="text" [(ngModel)] = "persondata.address1" [disabled] = "!persondetailsedit">
                     </div>
                     <div class = "combinelabel">
-                        <label for="address2">address2</label>
-                        <input type="text" name="address2" id="address2" [(ngModel)] = "persondata.address2" [disabled] = "!persondetailsedit">
+                        <label>address2</label>
+                        <input type="text"  [(ngModel)] = "persondata.address2" [disabled] = "!persondetailsedit">
                     </div> 
                     <div class = "combinelabel">
-                        <label for="country">country</label>
-                        <input type="text" name="country" id="country" [(ngModel)] = "persondata.country" [disabled] = "!persondetailsedit">
+                        <label>country</label>
+                        <input type="text"[(ngModel)] = "persondata.country" [disabled] = "!persondetailsedit">
                     </div> 
                     <div class = "combinelabel">
-                        <label for="pincode">pincode</label>
-                        <input type="text" name="pincode" id="pincode" [(ngModel)] = "persondata.pincode" [disabled] = "!persondetailsedit">
+                        <label>pincode</label>
+                        <input type="text" [(ngModel)] = "persondata.pincode" [disabled] = "!persondetailsedit">
                     </div>
                     <div class = "combinelabel">
                         <div></div>
@@ -86,28 +86,37 @@
                 <div class="col card m-2">
                
                     <div class="combinelabel">
-                        <label for="qty">Qty</label>
-                        <input type="text" name="qty" id="qty" [(ngModel)] = "financedata.qty">
+                        <label>Qty</label>
+                        <input type="text"  [(ngModel)] = "financedata.qty">
                     </div>
                     <div class = "combinelabel">
-                        <label for="amount">Amount</label>
-                        <input type="text" name="amount" id="amount" [(ngModel)] = "financedata.amount">
+                        <label>Amount</label>
+                        <input type="text" [(ngModel)] = "financedata.amount">
                     </div>
                     <div class = "combinelabel">
-                        <label for="item">Item</label>
-                        <input type="text" name="item" id="item" [(ngModel)] = "financedata.item">
+                        <label>Item</label>
+                        <input type="text"  [(ngModel)] = "financedata.item">
                     </div>
                     <div class = "combinelabel">
-                        <label for="sno">sno</label>
-                        <input type="number" name="sno" id="sno" [(ngModel)] = "financedata.sno">
+                        <label>sno</label>
+                        <input type="number"  [(ngModel)] = "financedata.sno">
                     </div>
                     <div class = "combinelabel">
-                        <label for="date">Date</label>
-                        <input type="date" name="date" id="date" [(ngModel)] = "financedata.date">
+                        <label>Date</label>
+                        <input type="date"  [(ngModel)] = "financedata.date">
                     </div>
                     <ng-container *ngFor="let item of financedata.deposits; let i=index;let j =last" >
                         <div class = "combinelabel">
-                            Deposit {{i}}
+                            <div class="namewidth">   Deposit {{i+1}}</div>
+                            <label>Date</label>
+                            <input type="date" [(ngModel)] = "item.date">
+                            <label>Amount</label>
+                            <input type="number" [(ngModel)] = "item.amount">
+                        </div>
+                    </ng-container>
+                    <ng-container *ngFor="let item of financedata.giveextra; let i=index;let j =last" >
+                        <div class = "combinelabel">
+                            <div class="namewidth">  Extra Added {{i+1}}</div>
                             <label>Date</label>
                             <input type="date" [(ngModel)] = "item.date">
                             <label>Amount</label>
@@ -116,13 +125,46 @@
                     </ng-container>
                 </div>
             </div>
-            <div class="row"  *ngIf="showfinance">
+            <div class="row"  *ngIf="editfinance && financecaluclate">
                 <div class="col"></div>
-                <div class="col"></div>
+                <div class="col card">
+                    <div class="intreastrow">
+                        <div>IntreastRate</div>
+                        <div><input type="number" style="width: 80px;" [(ngModel)]="intreastrate"></div>
+                    </div>
+                    <div class="intreastrow">
+                        <div>FinalDate</div>
+                        <div><input type="date" [(ngModel)]="intreastfinaldate"></div>
+                    </div>
+                    <div  class="intreastrow">
+                        <div class="namewidth">Amount--</div>
+                        <div>{{financedata.date}}</div>
+                        <div>{{financedata.amount}}</div>
+                        <div [innerHTML]="caluclateintreast(financedata.date,financedata.amount)"></div>
+                    </div>
+                    <div  class="intreastrow" *ngFor="let item of financedata.deposits;let i=index">
+                        <div  class="namewidth">Deposit-{{i+1}}</div>
+                        <div>{{item.date}}</div>
+                        <div>{{item.amount}}</div>
+                        <div [innerHTML]="caluclateintreast(item.date,item.amount)"></div>
+                    </div>
+                    <div  class="intreastrow" *ngFor="let item of financedata.giveextra;let i=index">
+                        <div  class="namewidth">Extra Added-{{i+1}}</div>
+                        <div>{{item.date}}</div>
+                        <div>{{item.amount}}</div>
+                        <div [innerHTML]="caluclateintreast(item.date,item.amount)"></div>
+                    </div>
+                </div>
             </div>
             <div class="row " *ngIf="showfinance">
                 <div class="col buttondisplaybottom">
-                    <button style="margin-right: 5px;" *ngIf="editfinance">Caluclate Finance</button>
+                    <div  *ngIf="editfinance">
+                        <button style="margin-right: 5px;" (click) = "caluclatefinance()" >Caluclate Finance</button>
+                        <button (click) = "newdeposit()" >Add deposit</button>
+                        <button (click) = "newgiveextra()" >Give Extra</button>
+                    </div>
+                </div>
+                <div class="col buttondisplaybottom">
                     <button (click) = "submitdata()">Submit</button>
                 </div>
             </div>
