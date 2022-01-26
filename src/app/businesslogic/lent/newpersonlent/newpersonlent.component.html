@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row  mt-2">
+        <div class="col-sm-4 pt-2 card">
+            <form  #persondetails = "ngForm">
+                <div class="combinelabel">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" [(ngModel)] = "persondata.name" [disabled] = "!persondetailsedit">
+                </div>
+                <div class = "combinelabel">
+                    <label for="fatherorhusbandname">Father/husbandname</label>
+                    <input type="text" name="fatherorhusbandname" id="fatherorhusbandname" [(ngModel)] = "persondata.fatherorhusbandname" [disabled] = "!persondetailsedit">
+                </div>
+                <div class = "combinelabel">
+                    <label for="accno">accno</label>
+                    <input type="number" name="accno" id="accno" [(ngModel)] = "persondata.accno" [disabled] = "!persondetailsedit">
+                </div>
+                <div class="combinelabel">
+                    <label for="qty">Qty</label>
+                    <input type="text" name="qty" id="qty" [(ngModel)] = "lentdata.qty" [disabled] = "!persondetailsedit">
+                </div>
+                <div class = "combinelabel">
+                    <label for="amount">Amount</label>
+                    <input type="text" name="amount" id="amount" [(ngModel)] = "lentdata.amount" [disabled] = "!persondetailsedit">
+                </div>
+                <div class = "combinelabel">
+                    <label for="item">Item</label>
+                    <input type="text" name="item" id="item" [(ngModel)] = "lentdata.item" [disabled] = "!persondetailsedit">
+                </div>
+                <div class = "combinelabel">
+                    <label for="sno">sno</label>
+                    <input type="number" name="sno" id="sno" [(ngModel)] = "lentdata.sno" [disabled] = "!persondetailsedit">
+                </div>
+                <div class = "combinelabel">
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date" [(ngModel)] = "lentdata.date" [disabled] = "!persondetailsedit">
+                </div>
+                <div class = "combinelabel">
+                    <label for="phoneno">phoneno</label>
+                    <input type="text" name="phoneno" id="phoneno" [(ngModel)] = "persondata.phoneno" [disabled] = "!persondetailsedit">
+                </div>
+                <div class = "combinelabel">
+                    <label for="village">village</label>
+                    <input type="text" name="village" id="village" [(ngModel)] = "persondata.village" [disabled] = "!persondetailsedit">
+                </div>
+                <div class = "combinelabel">
+                    <label for="address1">address1</label>
+                    <input type="text" name="address1" id="address1" [(ngModel)] = "persondata.address1" [disabled] = "!persondetailsedit">
+                </div>
+                <div class = "combinelabel">
+                    <label for="address2">address2</label>
+                    <input type="text" name="address2" id="address2" [(ngModel)] = "persondata.address2" [disabled] = "!persondetailsedit">
+                </div> 
+                <div class = "combinelabel">
+                    <label for="country">country</label>
+                    <input type="text" name="country" id="country" [(ngModel)] = "persondata.country" [disabled] = "!persondetailsedit">
+                </div> 
+                <div class = "combinelabel">
+                    <label for="pincode">pincode</label>
+                    <input type="text" name="pincode" id="pincode" [(ngModel)] = "persondata.pincode" [disabled] = "!persondetailsedit">
+                </div>
+                <div class = "combinelabel">
+                    <div></div>
+                    <button *ngIf="!persondetailsedit" type="button" class="btn btn-primary mt-2" style="width: 100px;" (click)="editpage()">Edit</button>
+                    <button *ngIf="persondetailsedit" type="button" class="btn btn-secondary mt-2" style="width: 100px;" (click)="submitpage()">Submit</button>
+                </div>
+            </form>
+       </div>
+    </div>
+</div>

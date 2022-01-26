@@ -1,0 +1,36 @@
+.combinelabel{
+    gap: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 10%;
+  }
+.headerstyle{
+  display: flex;
+  font-size: 50px;
+  align-items: baseline;
+  height: 50px;
+}
+.buttondisplaybottom{
+  display: flex;
+  justify-content: flex-end;
+}
+.intreastrow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+.namewidth{
+  width: 100px;
+}

@@ -47,13 +47,22 @@ export class BusinesslogicService {
   getpersonfinance(data){
     return this.httpclient.post(this.baseurl+'getpersonfinance',data);
   }
+  getpersonlent(data) {
+    return this.httpclient.post(this.baseurl+'getpersonlent',data);
+  }
   updatepersondetials(data){
     return this.httpclient.post(this.baseurl+'updatepersondetials',data);
   }
   addnewpersonfin(data){
     return this.httpclient.post(this.baseurl+'addnewpersonfin',data);
   }
+  addnewpersonlent(data) {
+    return this.httpclient.post(this.baseurl+'addnewpersonlent',data);
+  }
   addfintoexistingpeople(data) {
     return this.httpclient.post(this.baseurl+'addfintoexistingpeople',data);
+  }
+  addlenttoexistingpeople(data) {
+    return this.httpclient.post(this.baseurl+'addlenttoexistingpeople',data);
   }
 }

@@ -7,6 +7,9 @@ import { FinanceComponent } from './finance/finance.component';
 import { NewpersonfinanceComponent } from './finance/newpersonfinance/newpersonfinance.component';
 import { PersondetailsComponent } from './finance/persondetails/persondetails.component';
 import { HomeComponent } from './home/home.component';
+import { LentComponent } from './lent/lent.component';
+import { NewpersonlentComponent } from './lent/newpersonlent/newpersonlent.component';
+import { PersondetailslentComponent } from './lent/persondetailslent/persondetailslent.component';
 import { SettingsComponent } from './settings/settings.component';
 import { StocksSalesComponent } from './stocks-sales/stocks-sales.component';
 
@@ -24,6 +27,13 @@ const routes: Routes = [
           { path:'' , component:FinanceComponent, canActivate : [AuthGuard]},
           { path:'person' , component:PersondetailsComponent, canActivate : [AuthGuard]},
           { path:'newperson' , component:NewpersonfinanceComponent, canActivate : [AuthGuard]}
+        ],
+        canActivate : [AuthGuard]},
+        { path:'Lent' , 
+        children: [
+          { path:'' , component:LentComponent, canActivate : [AuthGuard]},
+          { path:'person' , component:PersondetailslentComponent, canActivate : [AuthGuard]},
+          { path:'newperson' , component:NewpersonlentComponent, canActivate : [AuthGuard]}
         ],
         canActivate : [AuthGuard]}
     ],
