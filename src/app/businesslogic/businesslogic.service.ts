@@ -65,4 +65,10 @@ export class BusinesslogicService {
   addlenttoexistingpeople(data) {
     return this.httpclient.post(this.baseurl+'addlenttoexistingpeople',data);
   }
+  getexpense(data){
+    return this.httpclient.post(this.baseurl+'getexpense',data);
+  }
+  addexpense(data) {
+    return this.httpclient.post(this.baseurl+'addexpense',data);
+  }
 }

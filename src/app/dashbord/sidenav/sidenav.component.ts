@@ -38,6 +38,10 @@ export class SidenavComponent implements OnInit {
     {
       icon :'fa-cog',
       name : 'settings'
+    },
+    {
+      icon :'fa-map-o',
+      name : 'expenses'
     }
   ]
   constructor( breakpointObserver: BreakpointObserver,public dailog:MatDialog ,public router:Router) {

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SidenavComponent } from '../dashbord/sidenav/sidenav.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { AuthGuard } from './auth.guard';
+import { ExpensesComponent } from './expenses/expenses.component';
 import { FinanceComponent } from './finance/finance.component';
 import { NewpersonfinanceComponent } from './finance/newpersonfinance/newpersonfinance.component';
 import { PersondetailsComponent } from './finance/persondetails/persondetails.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path:'Stocks-Sales', component:StocksSalesComponent, canActivate : [AuthGuard]},
       { path:'Analysis', component:AnalyticsComponent, canActivate : [AuthGuard]},
       { path:'Home' , component:HomeComponent, canActivate : [AuthGuard]},
+      { path:'expenses' , component:ExpensesComponent, canActivate : [AuthGuard]},
       { path:'finance' , 
         children: [
           { path:'' , component:FinanceComponent, canActivate : [AuthGuard]},
@@ -35,7 +37,8 @@ const routes: Routes = [
           { path:'person' , component:PersondetailslentComponent, canActivate : [AuthGuard]},
           { path:'newperson' , component:NewpersonlentComponent, canActivate : [AuthGuard]}
         ],
-        canActivate : [AuthGuard]}
+        canActivate : [AuthGuard]},
+        
     ],
     canActivate : [AuthGuard]
   },
