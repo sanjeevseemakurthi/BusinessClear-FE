@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DatePipe, formatDate } from '@angular/common';
 import { tree } from 'd3';
+import { _ } from 'ag-grid-community';
 
 @Component({
   selector: 'app-persondetails',
@@ -132,8 +133,48 @@ export class PersondetailsComponent implements OnInit {
   caluclatefinance(){
     this.financecaluclate = !this.financecaluclate;
   }
-  caluclateintreast(amount,date) {
-    console.log(amount,date);
-    return "sanju";
+  caluclateintreastsimple(date,amount) {
+    let startdate = new Date(date);
+    let finaldate = new Date(this.intreastfinaldate);
+    console.log(startdate,finaldate);
+    let days = Math.floor((finaldate.getTime() - startdate.getTime()) / 1000 / 60 / 60 / 24);
+    console.log(days);
+    let result = amount +  Math.floor((amount*(days/365)*this.intreastrate)/100);
+    return result;
+  }
+  caluclateintreastcompound(date,amount) {
+    let startdate = new Date(date);
+    let finaldate = new Date(this.intreastfinaldate);
+    console.log(startdate,finaldate);
+    let days = Math.floor((finaldate.getTime() - startdate.getTime()) / 1000 / 60 / 60 / 24 );
+    console.log(days);
+    
+    let result = Math.floor(amount*Math.pow((1+this.intreastrate),(days/365)));
+    return result;
+  }
+  calcluatetotalsimple()
+  {_
+    let add = 0;
+    let minus = 0;
+    let mainamount = this.caluclateintreastsimple(this.financedata.date,this.financedata.amount);
+    this.financedata.deposits.forEach(element => {
+      add = add + this.caluclateintreastsimple(element.date,element.amount); 
+    });
+    this.financedata.giveextra.forEach(element => {
+      minus = minus + this.caluclateintreastsimple(element.date,element.amount); 
+    });
+    return mainamount + add - minus;
+  }
+  calcluatetotalcompound(){
+    let add = 0;
+    let minus = 0;
+    let mainamount = this.caluclateintreastcompound(this.financedata.date,this.financedata.amount);
+    this.financedata.deposits.forEach(element => {
+      add = add + this.caluclateintreastcompound(element.date,element.amount); 
+    });
+    this.financedata.giveextra.forEach(element => {
+      minus = minus + this.caluclateintreastcompound(element.date,element.amount); 
+    });
+    return mainamount + add - minus;
   }
 }
