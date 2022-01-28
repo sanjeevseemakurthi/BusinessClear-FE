@@ -27,4 +27,7 @@ export class SharedService {
     const blob = new Blob([res],{type:'text/csv'});
     filesaver.saveAs(blob, "template.csv")
   }
+  getperson(){
+    return this.httpreq.get(this.baseurl+'getperson')
+  }
 }

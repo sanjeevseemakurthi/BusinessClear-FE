@@ -35,8 +35,8 @@ export class ExpensesComponent implements OnInit {
   }
   populateexpensedata() {
     this.businesslogicService.getexpense({'date':this.date}).subscribe(res => {
-     if(res['expenses'] && res['expenses'][0] && res['expenses'][0].daydata) {
-      this.data = res['expenses'][0].daydata;
+     if(res['expenses'] && res['expenses'][0] && res['expenses'][0].dailyexpenses) {
+      this.data = res['expenses'][0].dailyexpenses;
      } else {
        this.data = [];
      }
@@ -59,7 +59,7 @@ export class ExpensesComponent implements OnInit {
   submitdata(){
     const payload = {
       "date": this.date,
-      "daydata":	this.data
+      "dailyexpenses":	this.data
     }
     if(this.id !== undefined){
       payload['id'] = this.id;

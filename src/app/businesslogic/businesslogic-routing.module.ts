@@ -13,6 +13,7 @@ import { NewpersonlentComponent } from './lent/newpersonlent/newpersonlent.compo
 import { PersondetailslentComponent } from './lent/persondetailslent/persondetailslent.component';
 import { SettingsComponent } from './settings/settings.component';
 import { StocksSalesComponent } from './stocks-sales/stocks-sales.component';
+import { StockspersondetailsComponent } from './stocks-sales/stockspersondetails/stockspersondetails.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,13 @@ const routes: Routes = [
     component:SidenavComponent,
     children: [
       { path:'settings', component:SettingsComponent, canActivate : [AuthGuard]},
-      { path:'Stocks-Sales', component:StocksSalesComponent, canActivate : [AuthGuard]},
+      { path:'Stocks-Sales',
+       children: [
+        { path:'' , component:StocksSalesComponent, canActivate : [AuthGuard]},
+        { path:'persondetails' , component:StockspersondetailsComponent, canActivate : [AuthGuard]},
+      ], 
+      canActivate : [AuthGuard]
+      },
       { path:'Analysis', component:AnalyticsComponent, canActivate : [AuthGuard]},
       { path:'Home' , component:HomeComponent, canActivate : [AuthGuard]},
       { path:'expenses' , component:ExpensesComponent, canActivate : [AuthGuard]},

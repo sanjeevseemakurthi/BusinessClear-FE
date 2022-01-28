@@ -10,13 +10,22 @@ import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { FilterComponent } from './filter/filter.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import { PiechartComponent } from './charts/piechart/piechart.component';
+import { PersondetailsComponent } from './persondetails/persondetails.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule  } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
-  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent, FileuploadComponent, PiechartComponent],
+  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent, FileuploadComponent, PiechartComponent, PersondetailsComponent],
   imports: [
     CommonModule,
     MatDialogModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatInputModule
   ],
   exports:[
     PiechartComponent,
@@ -26,7 +35,8 @@ import { PiechartComponent } from './charts/piechart/piechart.component';
     MatDialogModule,
     AleartdailogboxComponent,
     FilterComponent,
-    FileuploadComponent
+    FileuploadComponent,
+    PersondetailsComponent,
   ]
 })
 export class SharedModule { }

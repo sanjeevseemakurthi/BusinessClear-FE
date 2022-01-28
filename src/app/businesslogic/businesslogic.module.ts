@@ -25,10 +25,11 @@ import { LentComponent } from './lent/lent.component';
 import { NewpersonlentComponent } from './lent/newpersonlent/newpersonlent.component';
 import { PersondetailslentComponent } from './lent/persondetailslent/persondetailslent.component';
 import { ExpensesComponent } from './expenses/expenses.component';
+import { StockspersondetailsComponent } from './stocks-sales/stockspersondetails/stockspersondetails.component';
 
 
 @NgModule({
-  declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent, FinanceComponent, PersondetailsComponent, NewpersonfinanceComponent, LentComponent, NewpersonlentComponent, PersondetailslentComponent, ExpensesComponent],
+  declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent, FinanceComponent, PersondetailsComponent, NewpersonfinanceComponent, LentComponent, NewpersonlentComponent, PersondetailslentComponent, ExpensesComponent, StockspersondetailsComponent],
   imports: [
     CommonModule,
     SharedModule,

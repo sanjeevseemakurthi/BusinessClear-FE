@@ -9,6 +9,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import {AleartdailogboxComponent} from '../../shared/aleartdailogbox/aleartdailogbox.component';
 import { FileuploadComponent } from 'src/app/shared/fileupload/fileupload.component'; 
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-stocks-sales',
   templateUrl: './stocks-sales.component.html',
@@ -20,7 +21,7 @@ export class StocksSalesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(private matdailog:MatDialog,private businesslogicService:BusinesslogicService,
-    private Dailog:MatDialog) { }
+    private Dailog:MatDialog,private router:Router) { }
   settings_data = {};
   displayedColumns = ['id','initialdate','daylatest','amount','qty','leftamount','leftqty','daystocks','daystockamount','daysales','daysalesamount','action' ]
   settingsalldata = [];
@@ -143,5 +144,8 @@ export class StocksSalesComponent implements OnInit {
       );
     dailogref.afterClosed().subscribe(result => {
     })
+  }
+  pesondetails(){
+    this.router.navigate(['businesslogic/Stocks-Sales/persondetails'])
   }
 }
