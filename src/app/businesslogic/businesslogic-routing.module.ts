@@ -12,6 +12,8 @@ import { LentComponent } from './lent/lent.component';
 import { NewpersonlentComponent } from './lent/newpersonlent/newpersonlent.component';
 import { PersondetailslentComponent } from './lent/persondetailslent/persondetailslent.component';
 import { SettingsComponent } from './settings/settings.component';
+import { NewwpersonstocksComponent } from './stocks-sales/newwpersonstocks/newwpersonstocks.component';
+import { PersonstockssalesComponent } from './stocks-sales/personstockssales/personstockssales.component';
 import { StocksSalesComponent } from './stocks-sales/stocks-sales.component';
 import { StockspersondetailsComponent } from './stocks-sales/stockspersondetails/stockspersondetails.component';
 
@@ -25,6 +27,9 @@ const routes: Routes = [
        children: [
         { path:'' , component:StocksSalesComponent, canActivate : [AuthGuard]},
         { path:'persondetails' , component:StockspersondetailsComponent, canActivate : [AuthGuard]},
+        { path:'newperson' , component:NewwpersonstocksComponent, canActivate : [AuthGuard]},
+        { path:'person', component:PersonstockssalesComponent, canActivate : [AuthGuard]},
+        
       ], 
       canActivate : [AuthGuard]
       },

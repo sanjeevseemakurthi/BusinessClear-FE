@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import { SharedService } from '../shared.service';
 @Component({
@@ -8,6 +8,9 @@ import { SharedService } from '../shared.service';
 })
 export class StockssalesharedaddComponent implements OnInit {
 
+  @Input() pid = '';
+  @Input() spaceneed = true;
+  @Output() newItemEvent = new EventEmitter<any>();
   subproperties: any;
   settingobject: any;
   properties: string[];
@@ -32,6 +35,7 @@ export class StockssalesharedaddComponent implements OnInit {
 
   ngOnInit(): void {
     this.populatesettingsdata()
+    this.addstockdata['pid'] = this.pid
   }
   addstock() {
     this.addstockflag = true;
@@ -62,7 +66,7 @@ export class StockssalesharedaddComponent implements OnInit {
     this.sharedservices.addstocks(this.addstockdata).subscribe(res=> {
           this.addstockdata = loadashclonedeep(this.addstockdatanotchange);
           this.addstockflag =  false;
-         // this.populatetabledata(); // need to write output emitter
+          this.newItemEvent.next(true);
           this.addingtitle = "";
         });
   }

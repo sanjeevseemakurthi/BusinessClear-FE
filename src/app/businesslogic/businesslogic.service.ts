@@ -47,6 +47,9 @@ export class BusinesslogicService {
   getpersonfinance(data){
     return this.httpclient.post(this.baseurl+'getpersonfinance',data);
   }
+  getpersonstocks(data){
+    return this.httpclient.post(this.baseurl+'getpersonstocks',data);
+  }
   getpersonlent(data) {
     return this.httpclient.post(this.baseurl+'getpersonlent',data);
   }
@@ -70,5 +73,8 @@ export class BusinesslogicService {
   }
   addexpense(data) {
     return this.httpclient.post(this.baseurl+'addexpense',data);
+  }
+  addnewpersion(data) {
+    return this.httpclient.post(this.baseurl+'addnewperson',data);
   }
 }

@@ -28,6 +28,7 @@ export class StocksSalesComponent implements OnInit {
   displayedColumns = ['id','initialdate','daylatest','amount','qty','leftamount','leftqty','daystocks','daystockamount','daysales','daysalesamount','action' ]
   settingsalldata = [];
   settingsidmapping = {};
+  personid = '';
 
   ngOnInit(): void {
     this.populateallsettingsdata();

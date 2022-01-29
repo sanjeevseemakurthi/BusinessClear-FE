@@ -6,7 +6,7 @@
             <button (click) = "pesondetails()" >add stocks/sales with person details</button>
         </div>
     </div>
-    <app-stockssalesharedadd></app-stockssalesharedadd>
+    <app-stockssalesharedadd [pid]= "personid"(newItemEvent) = "populatetabledata()"></app-stockssalesharedadd>
     <div class="row">
         <div class="col">
             
