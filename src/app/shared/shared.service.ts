@@ -30,4 +30,10 @@ export class SharedService {
   getperson(){
     return this.httpreq.get(this.baseurl+'getperson')
   }
+  getsettingdata(){
+    return this.httpreq.get(this.baseurl+'getSettings')
+  }
+  addstocks(data) {
+    return this.httpreq.post(this.baseurl+'addstocks',data);
+  }
 }

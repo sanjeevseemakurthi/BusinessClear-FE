@@ -20,24 +20,22 @@ export class StocksSalesComponent implements OnInit {
   filter = '';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  subproperties: any;
+  settingobject: any;
+  properties: string[];
   constructor(private matdailog:MatDialog,private businesslogicService:BusinesslogicService,
     private Dailog:MatDialog,private router:Router) { }
   settings_data = {};
   displayedColumns = ['id','initialdate','daylatest','amount','qty','leftamount','leftqty','daystocks','daystockamount','daysales','daysalesamount','action' ]
   settingsalldata = [];
   settingsidmapping = {};
+
   ngOnInit(): void {
-    this.populatesettingsdata();
     this.populateallsettingsdata();
     this.populatetabledata();
   }
   ngAfterViewInit() {
    
-  }
-  populatesettingsdata() {
-    this.businesslogicService.getsettingdata().subscribe(res => {
-      this.settings_data = loadashclonedeep(res);
-    } , err => {});
   }
   populatetabledata() {
     this.businesslogicService.getlatesttransactions({}).subscribe(res => {
@@ -60,28 +58,7 @@ export class StocksSalesComponent implements OnInit {
       });
     } , err => {});
   }
-  addstock() {
-    let dialogRef = this.matdailog.open(AddStocksDailogComponent, {data:this.settings_data});
-    dialogRef.afterClosed().subscribe(result => {
-     if(result !== "") {
-       result['stockflag'] = true;
-      this.businesslogicService.addstocks(result).subscribe(res=> {
-        this.populatetabledata();
-      });
-     }
-    });
-  }
-  addsales() {
-    let dialogRef = this.matdailog.open(AddStocksDailogComponent,{data:this.settings_data});
-    dialogRef.afterClosed().subscribe(result => {
-     if(result !== "") {
-      result['stockflag'] = false;
-      this.businesslogicService.addstocks(result).subscribe(res=> {
-        this.populatetabledata();
-      });
-     }
-    });
-  }
+ 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

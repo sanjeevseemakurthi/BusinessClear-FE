@@ -15,8 +15,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule  } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { StockssalesharedaddComponent } from './stockssalesharedadd/stockssalesharedadd.component';
 @NgModule({
-  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent, FileuploadComponent, PiechartComponent, PersondetailsComponent],
+  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent, FileuploadComponent, PiechartComponent, PersondetailsComponent, StockssalesharedaddComponent],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -37,6 +38,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FilterComponent,
     FileuploadComponent,
     PersondetailsComponent,
+    StockssalesharedaddComponent
   ]
 })
 export class SharedModule { }
