@@ -5,7 +5,6 @@ import { BusinesslogicRoutingModule } from './businesslogic-routing.module';
 import { SettingsComponent } from './settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StocksSalesComponent } from './stocks-sales/stocks-sales.component';
-import { AddStocksDailogComponent } from './stocks-sales/add-stocks-dailog/add-stocks-dailog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule  } from '@angular/material/form-field';
@@ -29,7 +28,7 @@ import { StockspersondetailsComponent } from './stocks-sales/stockspersondetails
 
 
 @NgModule({
-  declarations: [SettingsComponent, StocksSalesComponent, AddStocksDailogComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent, FinanceComponent, PersondetailsComponent, NewpersonfinanceComponent, LentComponent, NewpersonlentComponent, PersondetailslentComponent, ExpensesComponent, StockspersondetailsComponent],
+  declarations: [SettingsComponent, StocksSalesComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent, FinanceComponent, PersondetailsComponent, NewpersonfinanceComponent, LentComponent, NewpersonlentComponent, PersondetailslentComponent, ExpensesComponent, StockspersondetailsComponent],
   imports: [
     CommonModule,
     SharedModule,

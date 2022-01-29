@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { BusinesslogicService } from '../businesslogic.service';
-import { AddStocksDailogComponent } from './add-stocks-dailog/add-stocks-dailog.component';
 import { EditStocksDailogComponent } from './edit-stocks-dailog/edit-stocks-dailog.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
