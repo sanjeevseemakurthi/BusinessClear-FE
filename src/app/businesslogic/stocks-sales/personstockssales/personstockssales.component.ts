@@ -34,6 +34,7 @@ export class PersonstockssalesComponent implements OnInit {
   intreastfinaldate;
   persondetailsedit = false;
   pid;
+  addtolent = false;
   displayedColumns = ['initialdate', 'amount','qty','property','subproperty'];
   ngOnInit(): void {
     this.activeroute.queryParamMap.subscribe(res=>{

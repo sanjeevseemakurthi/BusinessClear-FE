@@ -78,7 +78,7 @@
         <div class="col" >
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary" style="width: 250px;" (click) = "addnewfinance()">Add-new finance</button>
+                    <button class="btn btn-primary" style="width: 250px;" (click) = "addnewfinance()">Add-new Stocks/Sales</button>
                 </div>
             </div>
             <div class="row">
@@ -87,7 +87,7 @@
                 </div>
             </div>
            <div *ngIf="showfinance">
-                <app-stockssalesharedadd [pid]="pid" [spaceneed]= "'false'" (newItemEvent) ="populatepersondetail()" ></app-stockssalesharedadd>
+                <app-stockssalesharedadd [pid]="pid" [spaceneed]= "'false'" (newItemEvent) ="populatepersondetail()" [lentadd]= 'true'></app-stockssalesharedadd>
            </div>
            <div *ngIf="editfinance">
                <div class="row">

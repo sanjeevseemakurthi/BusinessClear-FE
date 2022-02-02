@@ -52,6 +52,20 @@
         <input type="number" [(ngModel)]="addstockdata.qty">
       </div>
     </div>
+    <div class="row" *ngIf="lentadd">
+      <div class="col-sm-8" *ngIf="spaceneed"></div>
+        <div class="col-sm-4 customspace">
+          <label>Lentadd </label>
+          <input type="checkbox"[(ngModel)]="lentcheck">
+        </div>
+      </div>
+    <div class="row" *ngIf="lentcheck">
+      <div class="col-sm-8" *ngIf="spaceneed"></div>
+        <div class="col-sm-4 customspace">
+          <label>Left amount</label>
+          <input type="number" [(ngModel)]="leftamount">
+        </div>
+      </div>
     <div class="row mt-2">
     <div class="col-sm-8" *ngIf="spaceneed"></div>
       <div class="col-sm-4 customspacebutton">
