@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DatePipe, formatDate } from '@angular/common';
 import { tree } from 'd3';
 import { _ } from 'ag-grid-community';
+import { MessageService } from 'src/app/message.service';
 @Component({
   selector: 'app-persondetailslent',
   templateUrl: './persondetailslent.component.html',
@@ -15,7 +16,7 @@ import { _ } from 'ag-grid-community';
 })
 export class PersondetailslentComponent implements OnInit {
 
-  constructor(public activeroute:ActivatedRoute,private businesslogicService:BusinesslogicService, public router:Router) { }
+  constructor(public activeroute:ActivatedRoute,private businesslogicService:BusinesslogicService, public router:Router,private meassgeservice:MessageService) { }
   dataSource: any;
   filter = '';
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -73,7 +74,9 @@ export class PersondetailslentComponent implements OnInit {
   submitpage(){
     this.businesslogicService.updatepersondetials(this.persondata).subscribe( res =>
       {
-       this.persondata = loadashclonedeep(res['person'][0]);
+       this.persondata = loadashclonedeep(res);
+       this.persondetailsedit = false;
+       this.meassgeservice.showMessage("people saved","sucess",1000);
       });
   }
   applyFilter(event: Event) {

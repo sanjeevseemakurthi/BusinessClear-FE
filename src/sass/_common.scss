@@ -1,0 +1,11 @@
+.mat-snack-bar-container {
+&.error {
+    background-color: red;
+}
+&.sucess {
+    background-color: rgba(0, 128, 0, 0.822);
+}
+&.warning {
+    background-color: orange;
+}
+}

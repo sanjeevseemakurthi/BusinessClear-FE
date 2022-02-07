@@ -12,6 +12,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthtokenInterceptor } from './authtoken.interceptor';
 
 import { AgGridModule } from 'ag-grid-angular';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AgGridModule } from 'ag-grid-angular';
     BrowserAnimationsModule,
     SharedModule,
     FormsModule,
+    MatSnackBarModule,
     AgGridModule.withComponents([])
   ],
   providers: [

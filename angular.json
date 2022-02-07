@@ -33,6 +33,11 @@
               "./node_modules/font-awesome/css/font-awesome.min.css",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/sass"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -100,6 +105,11 @@
               "./node_modules/font-awesome/css/font-awesome.min.css",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/sass"
+              ]
+            },
             "scripts": []
           }
         },

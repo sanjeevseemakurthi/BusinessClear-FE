@@ -66,7 +66,7 @@ export class StockssalesharedaddComponent implements OnInit {
   subpropertychange(data) {
     this.addstockdata.settingsid = data;
     this.subproperties.forEach(element => {
-      if(element.id === data)
+      if(String(element.id) === data)
       this.subproperty = element.name;
     });
   }
@@ -80,7 +80,9 @@ export class StockssalesharedaddComponent implements OnInit {
           "amount":this.leftamount ,
           "qty": this.addstockdata.qty,
           "date":this.addstockdata.initialdate,
+          "fromperson":this.addstockdata.stockflag,
           "sid":res["id"],
+          "pid":this.pid,
           "isactive": true,
           "deposits":[],
           "giveextra":[]

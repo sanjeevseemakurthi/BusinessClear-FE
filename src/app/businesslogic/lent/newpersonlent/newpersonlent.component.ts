@@ -36,7 +36,7 @@ persondetailsedit = true;
   submitpage(){
     let payload = {
       peopledata: this.persondata,
-      lentedata:this.lentdata
+      lentdata:this.lentdata
     }
     this.businesslogicService.addnewpersonlent(payload).subscribe(res => {});
   }
