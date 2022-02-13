@@ -1,5 +1,7 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {cloneDeep as loadashclonedeep} from 'lodash';
+import { MessageService } from 'src/app/message.service';
 import { SharedService } from '../shared.service';
 @Component({
   selector: 'app-stockssalesharedadd',
@@ -35,9 +37,11 @@ export class StockssalesharedaddComponent implements OnInit {
   }
   settings_data: any;
   subproperty: any;
-  constructor(private sharedservices:SharedService) { }
+  constructor(private sharedservices:SharedService,private messageservice:MessageService) { }
 
   ngOnInit(): void {
+    this.addstockdata.initialdate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+    this.addstockdatanotchange.initialdate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
     this.populatesettingsdata()
     this.addstockdata['pid'] = this.pid
   }
@@ -87,7 +91,9 @@ export class StockssalesharedaddComponent implements OnInit {
           "deposits":[],
           "giveextra":[]
         };
+        this.messageservice.showMessage("Stocks added sucessfully","sucess",1000);
         this.sharedservices.addlenttoexistingpeople(payload).subscribe(re=>{
+          this.messageservice.showMessage("Lent added sucessfully","sucess",1000);
           console.log("added to lent");
         });
       }
