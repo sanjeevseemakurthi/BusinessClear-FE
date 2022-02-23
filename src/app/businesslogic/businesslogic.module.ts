@@ -18,19 +18,16 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
 import { FinanceComponent } from './finance/finance.component';
-import { PersondetailsComponent } from './finance/persondetails/persondetails.component';
-import { NewpersonfinanceComponent } from './finance/newpersonfinance/newpersonfinance.component';
 import { LentComponent } from './lent/lent.component';
-import { NewpersonlentComponent } from './lent/newpersonlent/newpersonlent.component';
-import { PersondetailslentComponent } from './lent/persondetailslent/persondetailslent.component';
 import { ExpensesComponent } from './expenses/expenses.component';
-import { StockspersondetailsComponent } from './stocks-sales/stockspersondetails/stockspersondetails.component';
-import { NewwpersonstocksComponent } from './stocks-sales/newwpersonstocks/newwpersonstocks.component';
 import { PersonstockssalesComponent } from './stocks-sales/personstockssales/personstockssales.component';
+import { AccountsComponent } from './accounts/accounts.component';
+import { NewpersonaccountComponent } from './accounts/newpersonaccount/newpersonaccount.component';
+import { PersondataaccountsComponent } from './accounts/persondataaccounts/persondataaccounts.component';
 
 
 @NgModule({
-  declarations: [SettingsComponent, StocksSalesComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent, FinanceComponent, PersondetailsComponent, NewpersonfinanceComponent, LentComponent, NewpersonlentComponent, PersondetailslentComponent, ExpensesComponent, StockspersondetailsComponent, NewwpersonstocksComponent, PersonstockssalesComponent],
+  declarations: [SettingsComponent, StocksSalesComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent, FinanceComponent, LentComponent, ExpensesComponent, PersonstockssalesComponent, AccountsComponent, NewpersonaccountComponent, PersondataaccountsComponent],
   imports: [
     CommonModule,
     SharedModule,

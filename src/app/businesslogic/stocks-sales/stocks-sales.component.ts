@@ -123,6 +123,6 @@ export class StocksSalesComponent implements OnInit {
     })
   }
   pesondetails(){
-    this.router.navigate(['businesslogic/Stocks-Sales/persondetails'])
+    this.router.navigate(['businesslogic/person'],{queryParams:{typeofmodule:'Stocks-Sales'}});
   }
 }

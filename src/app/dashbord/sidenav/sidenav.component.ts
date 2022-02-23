@@ -33,6 +33,10 @@ export class SidenavComponent implements OnInit {
     },
     {
       icon :'fa-money',
+      name : 'Accounts'
+    },
+    {
+      icon :'fa-money',
       name : 'finance'
     },
     {
@@ -44,6 +48,7 @@ export class SidenavComponent implements OnInit {
       name : 'expenses'
     }
   ]
+  indirectlinks = ['finance','Accounts','Lent']
   constructor( breakpointObserver: BreakpointObserver,public dailog:MatDialog ,public router:Router) {
     breakpointObserver
     .observe([Breakpoints.Large])
@@ -67,6 +72,11 @@ loginpopup() {
     });
   }
   changeroute(url) {
-    this.router.navigate(['businesslogic/'+url])
+    if(this.indirectlinks.includes(url)) {
+      this.router.navigate(['businesslogic/person'],{queryParams:{typeofmodule:url}});
+    } else {
+      this.router.navigate(['businesslogic/'+url])
+
+    }
   }
 }

@@ -54,13 +54,16 @@ export class BusinesslogicService {
     return this.httpclient.post(this.baseurl+'getpersonlent',data);
   }
   updatepersondetials(data){
-    return this.httpclient.post(this.baseurl+'updatepersondetials',data);
+    return this.httpclient.post(this.baseurl+'addnewperson',data);
   }
   addnewpersonfin(data){
     return this.httpclient.post(this.baseurl+'addnewpersonfin',data);
   }
   addnewpersonlent(data) {
     return this.httpclient.post(this.baseurl+'addnewpersonlent',data);
+  }
+  addnewperson(data){
+    return this.httpclient.post(this.baseurl+'addnewperson',data);
   }
   addfintoexistingpeople(data) {
     return this.httpclient.post(this.baseurl+'addfintoexistingpeople',data);

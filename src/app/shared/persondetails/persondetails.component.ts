@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { SharedService } from '../shared.service'
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-persondetailsshared',
   templateUrl: './persondetails.component.html',
@@ -15,12 +15,14 @@ export class PersondetailsComponent implements OnInit {
   filter = '';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @Input() addpersonurls="";
-  @Input() rowclickurl="";
   persons_data: any;
-  constructor(private sharedService:SharedService, public router:Router) { }
+  typeofmodule: any;
+  constructor(private sharedService:SharedService, public router:Router,public activeroute:ActivatedRoute) { }
   displayedColumns = ['accno','name','fatherorhusbandname','village',]
   ngOnInit(): void {
+    this.activeroute.queryParamMap.subscribe(res=>{
+      this.typeofmodule = res['params'].typeofmodule;
+    })
     this.populatepeopledata();
   }
   populatepeopledata() {
@@ -40,9 +42,9 @@ export class PersondetailsComponent implements OnInit {
     }
   }
   rowclicked(row) {
-    this.router.navigate(['businesslogic/'+this.rowclickurl],{queryParams:{pid:row.id}})
+    this.router.navigate(['businesslogic/'+this.typeofmodule+'/persondetails'],{queryParams:{pid:row.id}})
   }
   addnewperson(){
-    this.router.navigate(['businesslogic/'+this.addpersonurls]);
+    this.router.navigate(['businesslogic/newperson'],{queryParams:{typeofmodule:this.typeofmodule}});
   }
 }

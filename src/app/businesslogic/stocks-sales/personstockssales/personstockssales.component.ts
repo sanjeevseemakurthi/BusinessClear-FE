@@ -26,7 +26,7 @@ export class PersonstockssalesComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   persondata:any;
   titlforoperations = "";
- 
+  stilloading = true;
   showfinance = false;
   editfinance = false;
   financecaluclate = false;
@@ -56,6 +56,7 @@ export class PersonstockssalesComponent implements OnInit {
       this.dataSource =  new MatTableDataSource(res['stocks']);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.stilloading = false;
      });
   }
   

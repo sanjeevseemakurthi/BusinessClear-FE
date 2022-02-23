@@ -30,6 +30,12 @@ export class SharedService {
   getperson(){
     return this.httpreq.get(this.baseurl+'getperson')
   }
+  getpersonbyid(data):Observable<any> {
+    return this.httpreq.post(this.baseurl+'getpersonbyid',data)
+  }
+  updatepersondetials(data) {
+    return this.httpreq.post(this.baseurl+'addnewperson',data)
+  }
   getsettingdata(){
     return this.httpreq.get(this.baseurl+'getSettings')
   }

@@ -1,50 +1,8 @@
 <div class="container-fluid">
     <div class="row" style="width: 100%;">
         <div class="col-sm-4">
-            <div class="row card p-2">
-               <div class="col">
-                    <div class="combinelabel">
-                        <label>Name</label>
-                        <input type="text" [(ngModel)] = "persondata.name" [disabled] = "!persondetailsedit">
-                    </div>
-                    <div class = "combinelabel">
-                        <label>Father/husbandname</label>
-                        <input type="text" [(ngModel)] = "persondata.fatherorhusbandname" [disabled] = "!persondetailsedit">
-                    </div>
-                    <div class = "combinelabel">
-                        <label>accno</label>
-                        <input type="number" [(ngModel)] = "persondata.accno" [disabled] = "!persondetailsedit">
-                    </div>
-                    <div class = "combinelabel">
-                        <label>phoneno</label>
-                        <input type="text"  [(ngModel)] = "persondata.phoneno" [disabled] = "!persondetailsedit">
-                    </div>
-                    <div class = "combinelabel">
-                        <label>village</label>
-                        <input type="text"[(ngModel)] = "persondata.village" [disabled] = "!persondetailsedit">
-                    </div>
-                    <div class = "combinelabel">
-                        <label>address1</label>
-                        <input type="text" [(ngModel)] = "persondata.address1" [disabled] = "!persondetailsedit">
-                    </div>
-                    <div class = "combinelabel">
-                        <label>address2</label>
-                        <input type="text"  [(ngModel)] = "persondata.address2" [disabled] = "!persondetailsedit">
-                    </div> 
-                    <div class = "combinelabel">
-                        <label>country</label>
-                        <input type="text"[(ngModel)] = "persondata.country" [disabled] = "!persondetailsedit">
-                    </div> 
-                    <div class = "combinelabel">
-                        <label>pincode</label>
-                        <input type="text" [(ngModel)] = "persondata.pincode" [disabled] = "!persondetailsedit">
-                    </div>
-                    <div class = "combinelabel">
-                        <div></div>
-                        <button *ngIf="!persondetailsedit" type="button" class="btn btn-primary mt-2" style="width: 100px;" (click)="editpage()">Edit</button>
-                        <button *ngIf="persondetailsedit" type="button" class="btn btn-secondary mt-2" style="width: 100px;" (click)="submitpage()">Submit</button>
-                    </div>
-               </div>
+            <div *ngIf="!stilloading">
+                <app-persondetailsedit [persondatainput] = "persondata" ></app-persondetailsedit>
             </div>
             <div class="row">
                 <div class="col">

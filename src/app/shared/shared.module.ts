@@ -16,8 +16,10 @@ import {MatFormFieldModule  } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { StockssalesharedaddComponent } from './stockssalesharedadd/stockssalesharedadd.component';
+import { PersondetailseditComponent } from './persondetailsedit/persondetailsedit.component';
+import { PersonaddComponent } from './personadd/personadd.component';
 @NgModule({
-  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent, FileuploadComponent, PiechartComponent, PersondetailsComponent, StockssalesharedaddComponent],
+  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent, FileuploadComponent, PiechartComponent, PersondetailsComponent, StockssalesharedaddComponent, PersondetailseditComponent, PersonaddComponent],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -38,7 +40,9 @@ import { StockssalesharedaddComponent } from './stockssalesharedadd/stockssalesh
     FilterComponent,
     FileuploadComponent,
     PersondetailsComponent,
-    StockssalesharedaddComponent
+    StockssalesharedaddComponent,
+    PersondetailseditComponent,
+    PersonaddComponent
   ]
 })
 export class SharedModule { }
