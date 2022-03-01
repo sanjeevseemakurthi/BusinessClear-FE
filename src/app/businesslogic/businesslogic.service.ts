@@ -53,6 +53,15 @@ export class BusinesslogicService {
   getpersonlent(data) {
     return this.httpclient.post(this.baseurl+'getpersonlent',data);
   }
+  getpersonaccounts(data) {
+    return this.httpclient.post(this.baseurl+'getpersonaccount',data);
+  }
+  addaccount(data) {
+    return this.httpclient.post(this.baseurl+'addaccount',data);
+  }
+  editaccount(data) {
+    return this.httpclient.post(this.baseurl+'editaccount',data);
+  }
   updatepersondetials(data){
     return this.httpclient.post(this.baseurl+'addnewperson',data);
   }

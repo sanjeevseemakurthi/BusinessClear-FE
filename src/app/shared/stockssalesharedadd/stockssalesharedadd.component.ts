@@ -75,36 +75,51 @@ export class StockssalesharedaddComponent implements OnInit {
     });
   }
   submit(){
-
-
     this.sharedservices.addstocks(this.addstockdata).subscribe(res=> {
       if(this.lentcheck) {
-        let payload = {
-          "item": this.subproperty,
-          "amount":this.leftamount ,
-          "qty": this.addstockdata.qty,
-          "date":this.addstockdata.initialdate,
-          "fromperson":this.addstockdata.stockflag,
-          "sid":res["id"],
-          "pid":this.pid,
-          "isactive": true,
-          "deposits":[],
-          "giveextra":[]
-        };
+        // let payload = {
+        //   "item": this.subproperty,
+        //   "amount":this.leftamount ,
+        //   "qty": this.addstockdata.qty,
+        //   "date":this.addstockdata.initialdate,
+        //   "fromperson":this.addstockdata.stockflag,
+        //   "sid":res["id"],
+        //   "pid":this.pid,
+        //   "isactive": true,
+        //   "deposits":[],
+        //   "giveextra":[]
+        // };
         this.messageservice.showMessage("Stocks added sucessfully","sucess",1000);
-        this.sharedservices.addlenttoexistingpeople(payload).subscribe(re=>{
-          this.messageservice.showMessage("Lent added sucessfully","sucess",1000);
-          console.log("added to lent");
+        // this.sharedservices.addlenttoexistingpeople(payload).subscribe(re=>{
+        //   this.messageservice.showMessage("Lent added sucessfully","sucess",1000);
+        //   console.log("added to lent");
+        // });
+        let payloadforaccounts = {
+          "date":this.addstockdata.initialdate,
+          "tid":res["id"],
+          "pid":this.pid,
+          "type":"Stocks-sales",
+        };
+        if(this.addstockdata.stockflag) {
+          payloadforaccounts['discription'] = "Stocks added for " + this.subproperty;
+          payloadforaccounts["withdraw"] = 0;
+          payloadforaccounts["deposit"] =  this.addstockdata.amount;
+        } else {
+          payloadforaccounts['discription'] = "Sales added for " + this.subproperty;
+          payloadforaccounts["withdraw"] = this.addstockdata.amount;
+          payloadforaccounts["deposit"] = 0;
+        }
+        this.sharedservices.addaccounttoexistingdata(payloadforaccounts).subscribe(re=>{
+          this.messageservice.showMessage("Account added sucessfully","sucess",1000);
         });
       }
-          this.subproperty = '';
-          this.leftamount = 0;
-          this.addstockdata = loadashclonedeep(this.addstockdatanotchange);
-          this.addstockflag =  false;
-          this.newItemEvent.next(true);
-          this.addingtitle = "";
+        this.subproperty = '';
+        this.leftamount = 0;
+        this.addstockdata = loadashclonedeep(this.addstockdatanotchange);
+        this.addstockflag =  false;
+        this.newItemEvent.next(true);
+        this.addingtitle = "";
         });
-   
   }
   changeflag(){
     this.addstockdata = loadashclonedeep(this.addstockdatanotchange);

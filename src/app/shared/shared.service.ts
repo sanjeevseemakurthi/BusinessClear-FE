@@ -45,4 +45,7 @@ export class SharedService {
   addlenttoexistingpeople(data) {
     return this.httpreq.post(this.baseurl+'addlenttoexistingpeople',data);
   }
+  addaccounttoexistingdata(data) {
+    return this.httpreq.post(this.baseurl+'addaccount',data);
+  }
 }
