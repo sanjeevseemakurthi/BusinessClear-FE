@@ -65,20 +65,15 @@
                     </div>
                     <ng-container *ngFor="let item of financedata.deposits; let i=index;let j =last" >
                         <div class = "combinelabel">
-                            <div class="namewidth">   Deposit {{i+1}}</div>
+                            <div class="namewidth">   Transaction {{i+1}}</div>
                             <label>Date</label>
                             <input type="date" [(ngModel)] = "item.date">
-                            <label>Amount</label>
-                            <input type="number" [(ngModel)] = "item.amount">
-                        </div>
-                    </ng-container>
-                    <ng-container *ngFor="let item of financedata.giveextra; let i=index;let j =last" >
-                        <div class = "combinelabel">
-                            <div class="namewidth">  Extra Added {{i+1}}</div>
-                            <label>Date</label>
-                            <input type="date" [(ngModel)] = "item.date">
-                            <label>Amount</label>
-                            <input type="number" [(ngModel)] = "item.amount">
+                            <label>Discription</label>
+                            <input type="text" [(ngModel)] = "item.discription">
+                            <label>Deposit</label>
+                            <input type="number" [(ngModel)] = "item.deposit">
+                            <label>Withdraw</label>
+                            <input type="number" [(ngModel)] = "item.withdraw">
                         </div>
                     </ng-container>
                     <div *ngIf="editfinance">
@@ -87,7 +82,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row m-2"  *ngIf="editfinance && financecaluclate">
+            <!-- <div class="row m-2"  *ngIf="editfinance && financecaluclate">
                 <div class="col-sm-3"></div>
                 <div class="col card">
                     <div class="intreastrow">
@@ -134,13 +129,12 @@
                         </tr>
                     </table>
                 </div>
-            </div>
+            </div> -->
             <div class="row " *ngIf="showfinance">
                 <div class="col buttondisplaybottom">
                     <div  *ngIf="editfinance">
-                        <button style="margin-right: 5px;" (click) = "caluclatefinance()" >Caluclate Finance</button>
-                        <button (click) = "newdeposit()" >Add deposit</button>
-                        <button (click) = "newgiveextra()" >Give Extra</button>
+                        <!-- <button style="margin-right: 5px;" (click) = "caluclatefinance()" >Caluclate Finance</button> -->
+                        <button (click) = "newdeposit()" >New Transaction</button>
                     </div>
                 </div>
                 <div class="col buttondisplaybottom">

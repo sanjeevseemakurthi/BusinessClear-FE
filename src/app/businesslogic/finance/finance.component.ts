@@ -31,8 +31,7 @@ export class FinanceComponent implements OnInit {
     "qty": 0,
     "date":'',
     "isactive": true,
-    "deposits":[],
-    "giveextra":[]
+    "deposits":[]
   }
   financedata = {
     "item": "",
@@ -41,8 +40,7 @@ export class FinanceComponent implements OnInit {
     "qty": 0,
     "date":'',
     "isactive": true,
-    "deposits":[],
-    "giveextra":[]
+    "deposits":[]
   }
   showfinance = false;
   editfinance = false;
@@ -84,9 +82,6 @@ export class FinanceComponent implements OnInit {
     if(row.deposits === undefined){
       row.deposits = [];
     }
-    if(row.giveextra === undefined) {
-      row.giveextra = [];
-    }
     this.showfinance = true;
     this.editfinance = true;
     this.financedata = loadashclonedeep(row);
@@ -102,16 +97,11 @@ export class FinanceComponent implements OnInit {
   newdeposit(){
     let j = {
       date: "",
-      amount:0
+      deposit:0,
+      discription:'',
+      withdraw:0
     };
     this.financedata.deposits.push(j);
-  }
-  newgiveextra() {
-    let j = {
-      date: "",
-      amount:0
-    };
-    this.financedata.giveextra.push(j);
   }
   submitdata(){
     this.financedata['pid'] = this.pid; 
@@ -122,52 +112,5 @@ export class FinanceComponent implements OnInit {
         this.editfinance = false;
         this.titlforoperations = ""
       });
-  }
-  caluclatefinance(){
-    this.financecaluclate = !this.financecaluclate;
-  }
-  caluclateintreastsimple(date,amount) {
-    let startdate = new Date(date);
-    let finaldate = new Date(this.intreastfinaldate);
-    console.log(startdate,finaldate);
-    let days = Math.floor((finaldate.getTime() - startdate.getTime()) / 1000 / 60 / 60 / 24);
-    console.log(days);
-    let result = amount +  Math.floor((amount*(days/365)*this.intreastrate)/100);
-    return result;
-  }
-  caluclateintreastcompound(date,amount) {
-    let startdate = new Date(date);
-    let finaldate = new Date(this.intreastfinaldate);
-    console.log(startdate,finaldate);
-    let days = Math.floor((finaldate.getTime() - startdate.getTime()) / 1000 / 60 / 60 / 24 );
-    console.log(days);
-    
-    let result = Math.floor(amount*Math.pow((1+this.intreastrate),(days/365)));
-    return result;
-  }
-  calcluatetotalsimple()
-  {_
-    let add = 0;
-    let minus = 0;
-    let mainamount = this.caluclateintreastsimple(this.financedata.date,this.financedata.amount);
-    this.financedata.deposits.forEach(element => {
-      add = add + this.caluclateintreastsimple(element.date,element.amount); 
-    });
-    this.financedata.giveextra.forEach(element => {
-      minus = minus + this.caluclateintreastsimple(element.date,element.amount); 
-    });
-    return mainamount + add - minus;
-  }
-  calcluatetotalcompound(){
-    let add = 0;
-    let minus = 0;
-    let mainamount = this.caluclateintreastcompound(this.financedata.date,this.financedata.amount);
-    this.financedata.deposits.forEach(element => {
-      add = add + this.caluclateintreastcompound(element.date,element.amount); 
-    });
-    this.financedata.giveextra.forEach(element => {
-      minus = minus + this.caluclateintreastcompound(element.date,element.amount); 
-    });
-    return mainamount + add - minus;
   }
 }
