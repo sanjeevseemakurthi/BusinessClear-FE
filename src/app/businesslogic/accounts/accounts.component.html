@@ -5,40 +5,40 @@
             <div class="col">
               <div *ngIf="!stilloading">
                 <app-persondetailsedit [persondatainput] = "persondata" ></app-persondetailsedit>
-            </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <br>
-              <button class="btn btn-primary" style="justify-content: flex-end;" (click) = "newtoggle()"
-              >Add new record</button>
-              <div class="card" *ngIf="addnewtoggle">
-                <div class="labeltext">
-                  <label for="date">Date</label>
-                  <input type="date"  id="date" [(ngModel)]="newrecord.date">
-                </div>
-                <div class="labeltext">
-                  <label for="discription">Discription</label>
-                  <textarea id="discription" cols="25" rows="3" [(ngModel)]="newrecord.discription"></textarea>
-                </div>
-                <div class="labeltext">
-                  <label for="withdraw">withdraw</label>
-                  <input type="number"  id="withdraw" [(ngModel)]="newrecord.withdraw">
-                </div>
-                <div class="labeltext">
-                  <label for="deposit">deposit</label>
-                  <input type="number"  id="deposit" [(ngModel)]="newrecord.deposit">
-                </div>
-                <div class="labeltext">
-                 <div></div>
-                 <button class="btn btn-primary" (click) ="submitdata()">Submit</button>
-                </div>
               </div>
             </div>
           </div>
         </div>
-       <div class="col">
+        <div class="col -sm-4">
+          <br>
+          <button class="btn btn-primary mb-2" style="justify-content: flex-end;" (click) = "newtoggle()"
+          >Add new record</button>
+          <div class="card" *ngIf="addnewtoggle">
+            <div class="labeltext">
+              <label for="date">Date</label>
+              <input type="date"  id="date" [(ngModel)]="newrecord.date">
+            </div>
+            <div class="labeltext">
+              <label for="discription">Discription</label>
+              <textarea id="discription" cols="25" rows="3" [(ngModel)]="newrecord.discription"></textarea>
+            </div>
+            <div class="labeltext">
+              <label for="withdraw">withdraw</label>
+              <input type="number"  id="withdraw" [(ngModel)]="newrecord.withdraw">
+            </div>
+            <div class="labeltext">
+              <label for="deposit">deposit</label>
+              <input type="number"  id="deposit" [(ngModel)]="newrecord.deposit">
+            </div>
+            <div class="labeltext">
+             <div></div>
+             <button class="btn btn-primary" (click) ="submitdata()">Submit</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col">
         <div class="row">
             <div class="col">
                 <mat-form-field appearance="standard">

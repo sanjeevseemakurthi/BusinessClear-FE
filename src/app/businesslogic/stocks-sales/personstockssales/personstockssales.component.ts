@@ -17,6 +17,8 @@ import { _ } from 'ag-grid-community';
 export class PersonstockssalesComponent implements OnInit {
   rowdata: any;
   seetings_data: any;
+  editindex = -1;
+  olddata: any;
 
  
   constructor(public activeroute:ActivatedRoute,private businesslogicService:BusinesslogicService, public router:Router) { }
@@ -35,7 +37,7 @@ export class PersonstockssalesComponent implements OnInit {
   persondetailsedit = false;
   pid;
   addtolent = false;
-  displayedColumns = ['initialdate', 'amount','qty','property','subproperty'];
+  displayedColumns = ['initialdate', 'amount','qty','property','subproperty','action'];
   ngOnInit(): void {
     this.activeroute.queryParamMap.subscribe(res=>{
       this.pid = res['params'].pid;
@@ -94,15 +96,7 @@ export class PersonstockssalesComponent implements OnInit {
   }
   submitdata(){
     console.log(this.rowdata);
-    delete this.rowdata.property;
-    delete this.rowdata.subproperty;
-    this.businesslogicService.updaterecord(this.rowdata).subscribe( res =>
-      {
-        this.populatepersondetail();
-        this.showfinance = false;
-        this.editfinance = false;
-        this.titlforoperations = ""
-      });
+   
   }
   gettypeintable(id,type) {
     let data;
@@ -112,5 +106,26 @@ export class PersonstockssalesComponent implements OnInit {
       }
     });
     return data;
+  }
+  editclicked(index,row) {
+    this.editindex = index;
+    if (this.olddata && this.olddata !== null) {
+    let indexofdata = this.dataSource.data.findIndex( elem => elem.id === this.olddata.id);
+    this.dataSource.data.splice(indexofdata,1,this.olddata);
+    this.dataSource.data = loadashclonedeep(this.dataSource.data);
+    }  
+    this.olddata = loadashclonedeep(row);
+  }
+  submitclicke(row) {
+    this.editindex = -1;
+    delete row.property;
+    delete row.subproperty;
+    this.businesslogicService.updaterecord(row).subscribe( res =>
+      {
+        this.populatepersondetail();
+        this.showfinance = false;
+        this.editfinance = false;
+        this.titlforoperations = ""
+      });
   }
 }

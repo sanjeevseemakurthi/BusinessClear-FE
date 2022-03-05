@@ -4,35 +4,56 @@
             <div *ngIf="!stilloading">
                 <app-persondetailsedit [persondatainput] = "persondata" ></app-persondetailsedit>
             </div>
-            <div class="row">
-                <div class="col">
-                    <mat-form-field appearance="standard">
-                        <mat-label>Filter</mat-label>
-                        <input matInput (keyup)="applyFilter($event)" [(ngModel)]="filter" placeholder="Ex. Mia" >
-                      </mat-form-field>
-                      <div class="mat-elevation-z8">
-                        <table mat-table [dataSource]="dataSource" matSort>
-                          <!-- ID Column -->
-                          <div *ngFor="let item of displayedColumns">
-                            <ng-container [matColumnDef] = "item" >
-                              <div *ngIf="!['property','subproperty'].includes(item)">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> {{item}} </th>
-                                <td mat-cell *matCellDef="let row"> {{row[item]}} </td>
-                              </div>
-                              <div *ngIf="['property','subproperty'].includes(item)">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header> {{item}} </th>
-                                <td mat-cell *matCellDef="let row"> {{gettypeintable(row.settingsid,item)}} </td>
-                              </div>
-                            </ng-container>
+        </div>
+        <div class="col-sm-8">
+            <div class="col">
+                <mat-form-field appearance="standard">
+                    <mat-label>Filter</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" [(ngModel)]="filter" placeholder="Ex. Mia" >
+                  </mat-form-field>
+                  <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource" matSort>
+                      <!-- ID Column -->
+                      <div *ngFor="let item of displayedColumns">
+                        <ng-container [matColumnDef] = "item" >
+                          <div *ngIf="!['initialdate','amount','qty','action','property','subproperty'].includes(item)">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{item}} </th>
+                            <td mat-cell *matCellDef="let row"> {{row[item]}} </td>
                           </div>
-                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click) =" rowclicked(row)"></tr>
-                        </table>
-                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+                          <div *ngIf="['property','subproperty'].includes(item)">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{item}} </th>
+                            <td mat-cell *matCellDef="let row"> {{gettypeintable(row.settingsid,item)}} </td>
+                          </div>
+                          <div *ngIf="['amount','qty'].includes(item)">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{item}} </th>
+                            <td mat-cell *matCellDef="let row"> 
+                                <input type="number" [(ngModel)]="row[item]" [disabled] = "row.id !== editindex">
+                            </td>
+                          </div>
+                          <div *ngIf="['initialdate'].includes(item)">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{item}} </th>
+                            <td mat-cell *matCellDef="let row"> 
+                                <input type="date" [(ngModel)]="row[item]" [disabled] = "row.id !== editindex">
+                            </td>
+                          </div>
+                          <div *ngIf="['action'].includes(item)">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{item}} </th>
+                            <td mat-cell *matCellDef="let row">
+                                <button class="btn btn-primary" (click) ="editclicked(row.id,row)" *ngIf="row.id !== editindex">Edit</button>
+                                <button class="btn btn-success"  (click) ="submitclicke(row)" *ngIf="row.id === editindex">Submit</button>
+                            </td>
+                          </div>
+                        </ng-container>
                       </div>
-                </div>
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+                  </div>
             </div>
         </div>
+    </div>
+    <div class="row">
         <div class="col" >
             <div class="row">
                 <div class="col">
