@@ -39,7 +39,7 @@
          <div class = "combinelabel">
              <div></div>
              <button *ngIf="!persondetailsedit" type="button" class="btn btn-primary mt-2" style="width: 100px;" (click)="editpage()">Edit</button>
-             <button *ngIf="persondetailsedit" type="button" class="btn btn-secondary mt-2" style="width: 100px;" (click)="submitpage()">Submit</button>
+             <button *ngIf="persondetailsedit" type="button" class="btn btn-secondary mt-2" style="width: 100px;" (click)="submitpage()" mat-dialog-close>Submit</button>
          </div>
     </div>
  </div>

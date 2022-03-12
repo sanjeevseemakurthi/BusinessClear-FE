@@ -42,7 +42,7 @@ export class AnalyticsComponent implements OnInit {
   isChecked = "true";
   stocksandsales = [
     {
-      name:'Stocks',
+      name:'Purchase',
       isSelected : true,
       isdisabled : false,
     },
@@ -157,7 +157,7 @@ export class AnalyticsComponent implements OnInit {
           children:[
             {
               field: '',
-              headerName:'Stocks',
+              headerName:'Purchase',
               minWidth: 70,
               maxWidth: 70,
               cellStyle: {color: 'red',  'font-size':' 15px !important','border-left': '1px solid black'},

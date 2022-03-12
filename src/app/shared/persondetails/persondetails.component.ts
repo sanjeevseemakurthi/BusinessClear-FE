@@ -5,6 +5,8 @@ import { SharedService } from '../shared.service'
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { PersonaddComponent } from '../personadd/personadd.component';
 @Component({
   selector: 'app-persondetailsshared',
   templateUrl: './persondetails.component.html',
@@ -17,7 +19,7 @@ export class PersondetailsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   persons_data: any;
   typeofmodule: any;
-  constructor(private sharedService:SharedService, public router:Router,public activeroute:ActivatedRoute) { }
+  constructor(private sharedService:SharedService, public router:Router,public activeroute:ActivatedRoute,public dialogref: MatDialog) { }
   displayedColumns = ['accno','name','fatherorhusbandname','village',]
   ngOnInit(): void {
     this.activeroute.queryParamMap.subscribe(res=>{
@@ -46,5 +48,15 @@ export class PersondetailsComponent implements OnInit {
   }
   addnewperson(){
     this.router.navigate(['businesslogic/newperson'],{queryParams:{typeofmodule:this.typeofmodule}});
+  }
+  openDialog() {
+    const adata = this.dialogref.open(PersonaddComponent,{
+      width:'500px',
+    });
+    adata.afterClosed().subscribe(res=>{
+      if(res) {
+        console.log("data");
+      }
+    })
   }
 }
