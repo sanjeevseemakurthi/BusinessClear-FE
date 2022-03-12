@@ -33,18 +33,18 @@ export class SidenavComponent implements OnInit {
     },
     {
       icon :'fa-money',
-      name : 'finance'
+      name : 'Finance'
     },
     {
       icon :'fa-cog',
-      name : 'settings'
+      name : 'Settings'
     },
     {
       icon :'fa-map-o',
-      name : 'expenses'
+      name : 'Expenses'
     }
   ]
-  indirectlinks = ['finance','Accounts','Lent']
+  indirectlinks = ['Finance','Accounts','Lent']
   constructor( breakpointObserver: BreakpointObserver,public dailog:MatDialog ,public router:Router) {
     breakpointObserver
     .observe([Breakpoints.Large])
