@@ -25,7 +25,7 @@ export class SidenavComponent implements OnInit {
     },
     {
       icon :'fa-shopping-cart',
-      name : 'Stocks-Sales'
+      name : 'Purchase-Sales'
     },
     {
       icon :'fa-money',

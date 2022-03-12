@@ -48,7 +48,7 @@ export class StockssalesharedaddComponent implements OnInit {
   addstock() {
     this.addstockflag = true;
     this.addstockdata.stockflag = true;
-    this.addingtitle = "Adding Stocks";
+    this.addingtitle = "Adding Purchase";
   }
   addsales() {
     this.addstockflag = true;
