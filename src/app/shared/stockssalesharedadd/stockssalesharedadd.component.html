@@ -6,15 +6,15 @@
 </div>
 <div class="mt-2 " *ngIf="addstockflag">
     <div class="row">
-    <div class="col-sm-8" *ngIf="spaceneed"></div>
-      <div class="col-sm-4 customspace"> 
+    
+      <div class="col customspace"> 
         <h1> {{addingtitle}}</h1>
         <i class="fa fa-times" aria-hidden="true" (click) = "changeflag()" style="color: red;cursor: pointer;"></i>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-8" *ngIf="spaceneed"></div>
-      <div class="col-sm-4 customspace"> 
+      
+      <div class="col customspace"> 
         <label for="property">Property</label>
         <select name="property" id="property"  (change)="assignsubproperties($event.target.value)" style="width: 200px;">
             <option *ngFor="let item of properties">{{item}}</option>
@@ -22,8 +22,8 @@
       </div>
     </div>
     <div class="row">
-    <div class="col-sm-8" *ngIf="spaceneed"></div>
-      <div class="col-sm-4 customspace"> 
+    
+      <div class="col customspace"> 
         <label for="settingsid">SubProperty</label>
         <select name="settingsid" id="settingsid" ngModel (change)="subpropertychange($event.target.value)" style="width: 200px;">
             <option [value]="-1">None</option>
@@ -32,50 +32,50 @@
        </div>
     </div>
     <div class="row">
-    <div class="col-sm-8" *ngIf="spaceneed"></div>
-      <div class="col-sm-4 customspace">
+    
+      <div class="col customspace">
         <label >Date</label>
         <input type="date" [(ngModel)]="addstockdata.initialdate">
       </div>
     </div>
     <div class="row">
-    <div class="col-sm-8" *ngIf="spaceneed"></div>
-      <div class="col-sm-4 customspace">
+    
+      <div class="col customspace">
         <label>Amount</label>
         <input type="number"[(ngModel)]="addstockdata.amount">
       </div>
     </div>
     <div class="row">
-    <div class="col-sm-8" *ngIf="spaceneed"></div>
-      <div class="col-sm-4 customspace">
+    
+      <div class="col customspace">
         <label>Quantity</label>
         <input type="number" [(ngModel)]="addstockdata.qty">
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-8" *ngIf="spaceneed"></div>
-        <div class="col-sm-4 customspace">
+      
+        <div class="col customspace">
           <label>selectperson</label>
           <app-selection [options] = "persondata" (selected)="optionselected($event)"></app-selection>
         </div>
       </div>
     <div class="row" *ngIf="lentadd">
-      <div class="col-sm-8" *ngIf="spaceneed"></div>
-        <div class="col-sm-4 customspace">
+      
+        <div class="col customspace">
           <label>Lentadd </label>
           <input type="checkbox"[(ngModel)]="lentcheck">
         </div>
       </div>
     <div class="row" *ngIf="lentcheck">
-      <div class="col-sm-8" *ngIf="spaceneed"></div>
-        <div class="col-sm-4 customspace">
+      
+        <div class="col customspace">
           <label>Left amount</label>
           <input type="number" [(ngModel)]="leftamount">
         </div>
       </div>
     <div class="row mt-2">
-    <div class="col-sm-8" *ngIf="spaceneed"></div>
-      <div class="col-sm-4 customspacebutton">
+    
+      <div class="col customspacebutton">
         <button type="submit" (click) = "submit()">Submit</button>
       </div>
     </div>

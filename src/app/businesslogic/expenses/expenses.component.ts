@@ -71,7 +71,9 @@ export class ExpensesComponent implements OnInit {
      } , err => {});
   }
   addstocks(){
-    const dialogRef = this.dialog.open(StockssalesharedaddComponent);
+    const dialogRef = this.dialog.open(StockssalesharedaddComponent,{
+      width:'500px'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
