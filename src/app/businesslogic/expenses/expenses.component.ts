@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BusinesslogicService } from '../businesslogic.service';
 import {cloneDeep as loadashclonedeep} from 'lodash';
+import {MatDialog} from '@angular/material/dialog';
+import { StockssalesharedaddComponent } from 'src/app/shared/stockssalesharedadd/stockssalesharedadd.component';
 
 @Component({
   selector: 'app-expenses',
@@ -27,7 +29,7 @@ export class ExpensesComponent implements OnInit {
     "withdraw": 0,
     "discription": ""
   };
-  constructor(private businesslogicService:BusinesslogicService, public router:Router) { }
+  constructor(private businesslogicService:BusinesslogicService, public router:Router,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.date =formatDate(new Date(), 'yyyy-MM-dd', 'en');
@@ -67,5 +69,18 @@ export class ExpensesComponent implements OnInit {
     this.businesslogicService.addexpense(payload).subscribe(res => {
       this.populateexpensedata();
      } , err => {});
+  }
+  addstocks(){
+    const dialogRef = this.dialog.open(StockssalesharedaddComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  addfinance(){
+
+  }
+  addeaccounts(){
+    
   }
 }

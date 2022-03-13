@@ -19,7 +19,7 @@ const routes: Routes = [
     path:'',
     component:SidenavComponent,
     children: [
-      { path:'settings', component:SettingsComponent, canActivate : [AuthGuard]},
+      { path:'Settings', component:SettingsComponent, canActivate : [AuthGuard]},
       { path:'person', component:PersondetailsComponent, canActivate : [AuthGuard]},
       { path:'newperson', component:PersonaddComponent, canActivate : [AuthGuard]},
       { path:'Purchase-Sales',

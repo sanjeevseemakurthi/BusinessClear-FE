@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'src/app/message.service';
 import { SharedService } from '../shared.service';
@@ -11,7 +12,10 @@ import { SharedService } from '../shared.service';
 export class PersonaddComponent implements OnInit {
   typeofmodule: any;
 
-  constructor(public activeroute:ActivatedRoute,private sharedservice:SharedService, public router:Router,private meassgeservice:MessageService) { }
+  constructor(public activeroute:ActivatedRoute,private sharedservice:SharedService, public router:Router,private meassgeservice:MessageService,
+    public dialogRef: MatDialogRef<PersonaddComponent>,
+    @Inject(MAT_DIALOG_DATA) public datamat,
+    ) { }
   persondata = {
     "country": "",
     "pincode": 0,
@@ -30,6 +34,8 @@ export class PersonaddComponent implements OnInit {
     })
   }
   changeroute(data) {
-    this.router.navigate(['businesslogic/'+this.typeofmodule+'/persondetails'],{queryParams:{pid:data}})
+    if(data && !this.datamat) {
+      this.router.navigate(['businesslogic/'+this.typeofmodule+'/persondetails'],{queryParams:{pid:data}})
+    }
   }
 }
