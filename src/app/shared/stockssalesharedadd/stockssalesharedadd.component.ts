@@ -35,6 +35,8 @@ export class StockssalesharedaddComponent implements OnInit {
     'settingsid':null,
     'stockflag':null
   }
+  persondata = []
+  selectedpid = 'none';
   settings_data: any;
   subproperty: any;
   constructor(private sharedservices:SharedService,private messageservice:MessageService) { }
@@ -42,7 +44,8 @@ export class StockssalesharedaddComponent implements OnInit {
   ngOnInit(): void {
     this.addstockdata.initialdate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
     this.addstockdatanotchange.initialdate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
-    this.populatesettingsdata()
+    this.populatesettingsdata();
+    this.populatepersondata();
     this.addstockdata['pid'] = this.pid
   }
   addstock() {
@@ -62,6 +65,18 @@ export class StockssalesharedaddComponent implements OnInit {
       this.assignsubproperties(this.properties[0])
     } , err => {});
   }
+  populatepersondata(){
+    this.sharedservices.getperson().subscribe(res=> {
+      this.persondata = loadashclonedeep(res["persons"]);
+    })
+  }
+  optionselected(data){
+    if(data === 'none') {
+      this.selectedpid = 'none'
+    } else {
+      this.selectedpid = data.id;
+    }
+  }
   assignsubproperties(data){
     this.subproperties = this.settings_data[data];
     this.addstockdata.settingsid = data;
@@ -75,6 +90,9 @@ export class StockssalesharedaddComponent implements OnInit {
     });
   }
   submit(){
+    if(this.selectedpid !== 'none') {
+      this.addstockdata['pid'] = this.selectedpid;
+    }
     this.sharedservices.addstocks(this.addstockdata).subscribe(res=> {
       if(this.lentcheck) {
         // let payload = {

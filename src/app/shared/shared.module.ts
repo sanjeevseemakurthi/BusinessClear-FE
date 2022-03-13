@@ -15,11 +15,13 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule  } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSelectModule} from '@angular/material/select';
 import { StockssalesharedaddComponent } from './stockssalesharedadd/stockssalesharedadd.component';
 import { PersondetailseditComponent } from './persondetailsedit/persondetailsedit.component';
 import { PersonaddComponent } from './personadd/personadd.component';
+import { SelectionComponent } from './selection/selection.component';
 @NgModule({
-  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent, FileuploadComponent, PiechartComponent, PersondetailsComponent, StockssalesharedaddComponent, PersondetailseditComponent, PersonaddComponent],
+  declarations: [NoroutefoundComponent, LogindailogComponent, AleartdailogboxComponent, LineChartComponent, FilterComponent, FileuploadComponent, PiechartComponent, PersondetailsComponent, StockssalesharedaddComponent, PersondetailseditComponent, PersonaddComponent, SelectionComponent],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -28,6 +30,7 @@ import { PersonaddComponent } from './personadd/personadd.component';
     MatTableModule,
     MatFormFieldModule,
     MatPaginatorModule,
+    MatSelectModule,
     MatInputModule
   ],
   exports:[

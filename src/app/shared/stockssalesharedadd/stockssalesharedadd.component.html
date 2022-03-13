@@ -52,6 +52,13 @@
         <input type="number" [(ngModel)]="addstockdata.qty">
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-8" *ngIf="spaceneed"></div>
+        <div class="col-sm-4 customspace">
+          <label>selectperson</label>
+          <app-selection [options] = "persondata" (selected)="optionselected($event)"></app-selection>
+        </div>
+      </div>
     <div class="row" *ngIf="lentadd">
       <div class="col-sm-8" *ngIf="spaceneed"></div>
         <div class="col-sm-4 customspace">

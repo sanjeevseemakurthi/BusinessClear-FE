@@ -1,0 +1,17 @@
+.popupcalss{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    z-index: 10;
+    border: 1px solid black;
+    margin-top: 1px;
+}
+.button_custom {
+    border-bottom:1px solid rgb(236, 236, 236) !important;
+    background-color: white; 
+    border: none;
+}
+.hiddenclass{
+    visibility: hidden;
+}
