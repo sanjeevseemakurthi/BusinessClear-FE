@@ -1,6 +1,6 @@
 <div class="container-fluid">
-    <div class="row" style="width: 100%;">
-        <div class="col-sm-4">
+    <div class="row" style="width: 100%;" >
+        <div class="col-sm-4" *ngIf=" !inputdata">
             <div *ngIf="!stilloading">
                 <app-persondetailsedit [persondatainput] = "persondata" ></app-persondetailsedit>
             </div>
@@ -82,54 +82,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="row m-2"  *ngIf="editfinance && financecaluclate">
-                <div class="col-sm-3"></div>
-                <div class="col card">
-                    <div class="intreastrow">
-                        <div>IntreastRate</div>
-                        <div><input type="number" style="width: 80px;" [(ngModel)]="intreastrate"></div>
-                        <div>FinalDate</div>
-                        <div><input type="date" [(ngModel)]="intreastfinaldate"></div>
-                    </div>
-                    <table>
-                        <tr>
-                            <td>Type</td>
-                            <td>Date</td>
-                            <td>amount</td>
-                            <td>SimpleInt</td>
-                            <td>CompoundInt</td>
-                        </tr>
-                        <tr>
-                            <td>Amount</td>
-                            <td>{{financedata.date}}</td>
-                            <td>{{financedata.amount}}</td>
-                            <td> <div [innerHTML]="caluclateintreastsimple(financedata.date,financedata.amount)"></div></td>
-                            <td> <div [innerHTML]="caluclateintreastcompound(financedata.date,financedata.amount)"></div></td>
-                        </tr>
-                        <tr *ngFor="let item of financedata.deposits;let i=index">
-                            <td><div  class="namewidth">Deposit-{{i+1}}</div></td>
-                            <td><div>{{item.date}}</div></td>
-                            <td><div>{{item.amount}}</div></td>
-                            <td><div [innerHTML]="caluclateintreastsimple(item.date,item.amount)"></div></td>
-                            <td><div [innerHTML]="caluclateintreastcompound(item.date,item.amount)"></div></td>
-                        </tr>
-                        <tr  *ngFor="let item of financedata.giveextra;let i=index">
-                            <td><div  class="namewidth">Extra Added-{{i+1}}</div></td>
-                            <td><div>{{item.date}}</div></td>
-                            <td><div>{{item.amount}}</div></td>
-                            <td><div [innerHTML]="caluclateintreastsimple(item.date,item.amount)"></div></td>
-                            <td><div [innerHTML]="caluclateintreastcompound(item.date,item.amount)"></div></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>Total</td>
-                            <td><div [innerHTML]="calcluatetotalsimple()"></div></td>
-                            <td><div [innerHTML]="calcluatetotalcompound()"></div></td>
-                        </tr>
-                    </table>
-                </div>
-            </div> -->
             <div class="row " *ngIf="showfinance">
                 <div class="col buttondisplaybottom">
                     <div  *ngIf="editfinance">

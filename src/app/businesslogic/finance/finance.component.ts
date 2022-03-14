@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BusinesslogicService } from '../businesslogic.service';
 import {cloneDeep as loadashclonedeep} from 'lodash';
@@ -20,6 +20,8 @@ export class FinanceComponent implements OnInit {
   dataSource: any;
   filter = '';
   stilloading = true;
+  @Input() inputpid;
+  @Input() inputdata  = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   persondata:any;
@@ -51,9 +53,13 @@ export class FinanceComponent implements OnInit {
   pid;
   displayedColumns = ['id', 'item', 'date', 'amount'];
   ngOnInit(): void {
-    this.activeroute.queryParamMap.subscribe(res=>{
-      this.pid = res['params'].pid;
-    })
+    if(this.inputdata) {
+      this.pid = this.inputpid;
+    } else {
+      this.activeroute.queryParamMap.subscribe(res=>{
+        this.pid = res['params'].pid;
+      })
+    }
     this.intreastfinaldate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
     this.populatepersondetail();
   }

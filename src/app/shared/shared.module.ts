@@ -45,7 +45,8 @@ import { SelectionComponent } from './selection/selection.component';
     PersondetailsComponent,
     StockssalesharedaddComponent,
     PersondetailseditComponent,
-    PersonaddComponent
+    PersonaddComponent,
+    SelectionComponent
   ]
 })
 export class SharedModule { }

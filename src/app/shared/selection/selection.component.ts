@@ -14,7 +14,7 @@ export class SelectionComponent implements OnInit {
   popupshow;
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
   optionselected(data?){
     if(data){

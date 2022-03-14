@@ -5,6 +5,7 @@ import { BusinesslogicService } from '../businesslogic.service';
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import {MatDialog} from '@angular/material/dialog';
 import { StockssalesharedaddComponent } from 'src/app/shared/stockssalesharedadd/stockssalesharedadd.component';
+import { AddfinancedailogueComponent } from '../finance/addfinancedailogue/addfinancedailogue.component';
 
 @Component({
   selector: 'app-expenses',
@@ -80,7 +81,14 @@ export class ExpensesComponent implements OnInit {
     });
   }
   addfinance(){
+    const dialogRef = this.dialog.open(AddfinancedailogueComponent,{
+      minWidth: '600px',
+      maxHeight: '90vh'
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   addeaccounts(){
     
