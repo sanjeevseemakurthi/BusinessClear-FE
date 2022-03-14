@@ -22,13 +22,13 @@ import { LentComponent } from './lent/lent.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { PersonstockssalesComponent } from './stocks-sales/personstockssales/personstockssales.component';
 import { AccountsComponent } from './accounts/accounts.component';
-import { NewpersonaccountComponent } from './accounts/newpersonaccount/newpersonaccount.component';
-import { PersondataaccountsComponent } from './accounts/persondataaccounts/persondataaccounts.component';
 import { AddfinancedailogueComponent } from './finance/addfinancedailogue/addfinancedailogue.component';
 
 
 @NgModule({
-  declarations: [SettingsComponent, StocksSalesComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent, FinanceComponent, LentComponent, ExpensesComponent, PersonstockssalesComponent, AccountsComponent, NewpersonaccountComponent, PersondataaccountsComponent, AddfinancedailogueComponent],
+  declarations: [SettingsComponent, StocksSalesComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent, 
+    FinanceComponent, LentComponent, ExpensesComponent, PersonstockssalesComponent, AccountsComponent, 
+    AddfinancedailogueComponent],
   imports: [
     CommonModule,
     SharedModule,
