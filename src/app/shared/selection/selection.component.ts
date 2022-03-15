@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {cloneDeep as loadashclonedeep} from 'lodash';
 
 @Component({
   selector: 'app-selection',
@@ -11,15 +12,19 @@ export class SelectionComponent implements OnInit {
   @Output() selected  =   new EventEmitter<any>();
   selectedoption = 'none';
   selectedrow = [];
+  copydata = []
   popupshow;
   constructor() { }
 
   ngOnInit() {
+    this.copydata = loadashclonedeep(this.options);
+  }
+  ngOnChanges(changes):void{
+    this.copydata = loadashclonedeep(this.options)
   }
   optionselected(data?){
     if(data){
       this.selectedrow = data;
-      console.log(data,this.selected);
     } else {
       this.selectedrow = ['none'];
     }
@@ -37,5 +42,14 @@ export class SelectionComponent implements OnInit {
       }
       this.popupshow = false;
     }, 300);
+  }
+  filterdata(test?){
+    this.options = [];
+    this.copydata.forEach(element => {
+      if((element.name).toLowerCase().includes(this.selectedoption.toLowerCase())){
+        this.options.push(element);
+      }
+    });
+    this.options = loadashclonedeep(this.options);
   }
 }

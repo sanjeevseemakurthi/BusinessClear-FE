@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { StockssalesharedaddComponent } from 'src/app/shared/stockssalesharedadd/stockssalesharedadd.component';
 import { AddfinancedailogueComponent } from '../finance/addfinancedailogue/addfinancedailogue.component';
 import { AccountsdailogComponent } from '../accounts/accountsdailog/accountsdailog.component';
+import { PersonaddComponent } from 'src/app/shared/personadd/personadd.component';
 
 @Component({
   selector: 'app-expenses',
@@ -57,8 +58,16 @@ export class ExpensesComponent implements OnInit {
   changedata(){
     this.populateexpensedata();
   }
-  addexpense(){
-    this.data.push(loadashclonedeep(this.newexpense));
+  addperson() {
+    const adata = this.dialog.open(PersonaddComponent,{
+      data: true,
+      width:'500px',
+    });
+    adata.afterClosed().subscribe(res=>{
+      if(res) {
+        console.log("data");
+      }
+    })
   }
   submitdata(){
     const payload = {

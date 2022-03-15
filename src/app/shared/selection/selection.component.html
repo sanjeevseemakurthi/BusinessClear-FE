@@ -1,8 +1,7 @@
 <div >
-    <input type="text" [(ngModel)]="selectedoption" (focus)="openpopup($event)"  (focusout)="hide($event)" width="100px">
+    <input type="text" [(ngModel)]="selectedoption" (focus)="openpopup($event)"  (focusout)="hide($event)" width="100px" (input)="filterdata($event)">
     <div [ngClass]="{hiddenclass: !popupshow}" class="popupcalss">
         <button class="button_custom" (click) = "optionselected('none')">none</button>
         <button *ngFor="let item of options" class="button_custom" (click) = "optionselected(item)">{{item.name}}</button>
-
     </div>
 </div>
