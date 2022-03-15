@@ -6,6 +6,7 @@ import {cloneDeep as loadashclonedeep} from 'lodash';
 import {MatDialog} from '@angular/material/dialog';
 import { StockssalesharedaddComponent } from 'src/app/shared/stockssalesharedadd/stockssalesharedadd.component';
 import { AddfinancedailogueComponent } from '../finance/addfinancedailogue/addfinancedailogue.component';
+import { AccountsdailogComponent } from '../accounts/accountsdailog/accountsdailog.component';
 
 @Component({
   selector: 'app-expenses',
@@ -91,6 +92,12 @@ export class ExpensesComponent implements OnInit {
     });
   }
   addeaccounts(){
-    
+    const dialogRef = this.dialog.open(AccountsdailogComponent,{
+      maxHeight: '90vh'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

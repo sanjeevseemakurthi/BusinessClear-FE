@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'src/app/message.service';
 import { BusinesslogicService } from '../businesslogic.service';
@@ -34,6 +34,8 @@ export class AccountsComponent implements OnInit {
     discription:'',
   }
   addnewtoggle = false;
+  @Input() inputpid;
+  @Input() inputdata  = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   editindex = -1;
@@ -61,9 +63,13 @@ export class AccountsComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    if(this.inputdata) {
+      this.pid = this.inputpid;
+    } else {
     this.activeroute.queryParamMap.subscribe(res=>{
       this.pid = res['params'].pid;
     })
+    }
     this.intreastfinaldate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
     this.populatepersondetail();
   }

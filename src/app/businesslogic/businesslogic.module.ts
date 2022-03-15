@@ -23,12 +23,13 @@ import { ExpensesComponent } from './expenses/expenses.component';
 import { PersonstockssalesComponent } from './stocks-sales/personstockssales/personstockssales.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AddfinancedailogueComponent } from './finance/addfinancedailogue/addfinancedailogue.component';
+import { AccountsdailogComponent } from './accounts/accountsdailog/accountsdailog.component';
 
 
 @NgModule({
   declarations: [SettingsComponent, StocksSalesComponent, EditStocksDailogComponent, AnalyticsComponent, HomeComponent, 
     FinanceComponent, LentComponent, ExpensesComponent, PersonstockssalesComponent, AccountsComponent, 
-    AddfinancedailogueComponent],
+    AddfinancedailogueComponent, AccountsdailogComponent],
   imports: [
     CommonModule,
     SharedModule,

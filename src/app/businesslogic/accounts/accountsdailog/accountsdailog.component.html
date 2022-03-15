@@ -1,0 +1,11 @@
+<div class="row" *ngIf="selectedpid === 'none'">
+    <div class="col">
+        <label>selectperson</label>
+    </div>
+    <div class="col">
+        <app-selection [options] = "persondata" (selected)="optionselected($event)"></app-selection>
+    </div>
+</div>
+<div class="row" *ngIf="selectedpid !== 'none'">
+  <app-accounts [inputpid] = "selectedpid" [inputdata]="true" ></app-accounts>
+</div>
