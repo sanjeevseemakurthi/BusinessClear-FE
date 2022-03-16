@@ -3,12 +3,11 @@
         <div class="col">  
             <label>Date :</label>
             <input type="date" [(ngModel)]="date" style="margin-left: 30px;" (change) = "changedata()"></div>
-        <div class="col">
+        <div class="col" style="display: flex;gap: 10px;">
             <button type="button" class="btn btn-secondary" (click) = "addperson()">Add Person</button>
-            <button type="button" class="btn btn-primary" (click) = "addstocks()">Add Stock/sales</button>
+            <button type="button" class="btn btn-primary" (click) = "addstocks()">Add Purchase/sales</button>
             <button type="button" class="btn btn-primary" (click) = "addfinance()">Add Finance</button>
             <button type="button" class="btn btn-primary" (click) = "addeaccounts()">Add Accounts</button>
-
         </div>
     </div>
     <div class="row mt-2">

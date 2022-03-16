@@ -40,7 +40,7 @@ export class StockssalesharedaddComponent implements OnInit {
   selectedpid = 'none';
   settings_data: any;
   subproperty: any;
-  constructor( public dialogRef: MatDialogRef<StockssalesharedaddComponent>,private sharedservices:SharedService,private messageservice:MessageService) { }
+  constructor(private sharedservices:SharedService,private messageservice:MessageService) { }
 
   ngOnInit(): void {
     this.addstockdata.initialdate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
@@ -123,21 +123,21 @@ export class StockssalesharedaddComponent implements OnInit {
           "pid":this.pid,
           "type":"Stocks-sales",
         };
+        if(this.selectedpid !== 'none') {
+          payloadforaccounts['pid'] = this.selectedpid;
+        }
         if(this.addstockdata.stockflag) {
-          payloadforaccounts['discription'] = "Stocks added for " + this.subproperty;
+          payloadforaccounts['discription'] = "Lent for purchase of " + this.subproperty;
           payloadforaccounts["withdraw"] = 0;
           payloadforaccounts["deposit"] =  this.leftamount;
         } else {
-          payloadforaccounts['discription'] = "Sales added for " + this.subproperty;
+          payloadforaccounts['discription'] = "Credit given for Sales of " + this.subproperty;
           payloadforaccounts["withdraw"] = this.leftamount;
           payloadforaccounts["deposit"] = 0;
         }
         this.sharedservices.addaccounttoexistingdata(payloadforaccounts).subscribe(re=>{
           this.messageservice.showMessage("Account added sucessfully","sucess",1000);
-          this.dialogRef.close("true");
         });
-      } else{
-        this.dialogRef.close("true");
       }
         this.subproperty = '';
         this.leftamount = 0;

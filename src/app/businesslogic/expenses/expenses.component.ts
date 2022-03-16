@@ -88,7 +88,9 @@ export class ExpensesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
      if (result) {
-      this.populateexpensedata()
+      setTimeout(() => {
+        this.populateexpensedata()
+      }, 1000);
      }
     });
   }
