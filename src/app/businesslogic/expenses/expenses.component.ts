@@ -87,7 +87,9 @@ export class ExpensesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+     if (result) {
+      this.populateexpensedata()
+     }
     });
   }
   addfinance(){
@@ -95,9 +97,10 @@ export class ExpensesComponent implements OnInit {
       minWidth: '600px',
       maxHeight: '90vh'
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if (result) {
+        this.populateexpensedata()
+       }
     });
   }
   addeaccounts(){
@@ -106,7 +109,9 @@ export class ExpensesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      if (result) {
+        this.populateexpensedata()
+       }
     });
   }
 }

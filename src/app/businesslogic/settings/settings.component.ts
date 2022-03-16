@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BusinesslogicService} from '../businesslogic.service';
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import { forkJoin } from 'rxjs';
-import { element } from 'protractor';
+import { MessageService } from 'src/app/message.service';
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -15,7 +15,7 @@ export class SettingsComponent implements OnInit {
   newnumber = 0;
   deletednodes = [];
   subcriptionlist:any;
-  constructor(public businesslogicservice:BusinesslogicService) { }
+  constructor(public businesslogicservice:BusinesslogicService,private messageService:MessageService) { }
 
   ngOnInit(): void {
     this.populatedata();
@@ -100,6 +100,7 @@ export class SettingsComponent implements OnInit {
     payloads.push( this.businesslogicservice.deletesettings(this.deletednodes));
    }
    forkJoin(payloads).subscribe(res => {
+     this.messageService.showMessage('Changes added sucessfully','sucess',1000);
      this.deletednodes = [];
     this.populatedata();
    })

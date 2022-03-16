@@ -1,5 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import {cloneDeep as loadashclonedeep} from 'lodash';
 import { MessageService } from 'src/app/message.service';
 import { SharedService } from '../shared.service';
@@ -39,7 +40,7 @@ export class StockssalesharedaddComponent implements OnInit {
   selectedpid = 'none';
   settings_data: any;
   subproperty: any;
-  constructor(private sharedservices:SharedService,private messageservice:MessageService) { }
+  constructor( public dialogRef: MatDialogRef<StockssalesharedaddComponent>,private sharedservices:SharedService,private messageservice:MessageService) { }
 
   ngOnInit(): void {
     this.addstockdata.initialdate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
@@ -73,8 +74,12 @@ export class StockssalesharedaddComponent implements OnInit {
   optionselected(data){
     if(data === 'none') {
       this.selectedpid = 'none'
+      this.lentadd = false;
+      this.lentcheck = false;
+      this.leftamount = 0;
     } else {
       this.selectedpid = data.id;
+      this.lentadd = true;
     }
   }
   assignsubproperties(data){
@@ -129,7 +134,10 @@ export class StockssalesharedaddComponent implements OnInit {
         }
         this.sharedservices.addaccounttoexistingdata(payloadforaccounts).subscribe(re=>{
           this.messageservice.showMessage("Account added sucessfully","sucess",1000);
+          this.dialogRef.close("true");
         });
+      } else{
+        this.dialogRef.close("true");
       }
         this.subproperty = '';
         this.leftamount = 0;
