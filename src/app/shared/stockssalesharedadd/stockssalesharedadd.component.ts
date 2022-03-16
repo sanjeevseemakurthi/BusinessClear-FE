@@ -126,10 +126,10 @@ export class StockssalesharedaddComponent implements OnInit {
         if(this.addstockdata.stockflag) {
           payloadforaccounts['discription'] = "Stocks added for " + this.subproperty;
           payloadforaccounts["withdraw"] = 0;
-          payloadforaccounts["deposit"] =  this.addstockdata.amount;
+          payloadforaccounts["deposit"] =  this.leftamount;
         } else {
           payloadforaccounts['discription'] = "Sales added for " + this.subproperty;
-          payloadforaccounts["withdraw"] = this.addstockdata.amount;
+          payloadforaccounts["withdraw"] = this.leftamount;
           payloadforaccounts["deposit"] = 0;
         }
         this.sharedservices.addaccounttoexistingdata(payloadforaccounts).subscribe(re=>{
